@@ -46,7 +46,7 @@ export default function Lanyard() {
         <span>Grab & fling the 3D lanyard pass</span>
       </div>
 
-      <ReactBitsLanyard position={[0, 0, 24]} fov={22} transparent={true} />
+      <ReactBitsLanyard position={[0, -0.6, 13.0]} fov={24} transparent={true} />
     </div>
   );
 }

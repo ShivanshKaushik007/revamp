@@ -74,4 +74,5 @@ function repackGLB(originalGlbPath, newPngPath, outputGlbPath) {
   console.log(`Repack successful! Wrote ${result.length} bytes to ${outputGlbPath}`);
 }
 
-repackGLB('public/assets/card.glb', 'scratch/new_texture.png', 'scratch/test_card.glb');
+repackGLB('public/assets/card.glb', 'scratch/new_texture.png', 'public/assets/card.glb');
+console.log('Successfully installed new minimalist card.glb into public/assets/card.glb');
