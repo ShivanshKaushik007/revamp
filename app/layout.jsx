@@ -42,6 +42,11 @@ export const metadata = {
     "Socket.io",
     "IET Lucknow",
   ],
+  icons: {
+    icon: "/logo.png",
+    shortcut: "/logo.png",
+    apple: "/logo.png",
+  },
 };
 
 export default function RootLayout({ children }) {

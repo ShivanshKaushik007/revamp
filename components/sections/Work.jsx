@@ -12,6 +12,7 @@ import {
   Layers,
   Sparkles,
   ArrowUpRight,
+  ArrowRight,
   Code2,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -36,11 +37,32 @@ const projects = [
     image: "/assets/swift.png",
     live: "https://swift-qko3.onrender.com/",
     github: "https://github.com/ShivanshKaushik007/swift",
-    blogUrl: "/blog",
+    blogUrl: "/blog/swift",
+  },
+  {
+    id: "busy",
+    num: "02",
+    title: "Busy",
+    tagline: "Multi-project task platform with PostgreSQL RLS & state machines",
+    category: "Full-Stack",
+    type: "Featured",
+    description:
+      "A production-style project and task management system built with Next.js, Supabase, and PostgreSQL. Features a finite state machine task lifecycle, graph cycle detection for dependencies, immutable audit logs, and bulletproof Row-Level Security.",
+    highlights: [
+      "Database-enforced security with PostgreSQL Row Level Security",
+      "Finite state machine preventing illegal task status transitions",
+      "Graph traversal algorithm detecting & reporting circular dependencies",
+      "Server actions as a type-safe transactional backend pipeline",
+    ],
+    stack: ["Next.js", "TypeScript", "PostgreSQL", "Supabase", "Row Level Security", "Server Actions"],
+    image: "/assets/Busy.png",
+    live: "https://busy-one.vercel.app",
+    github: "https://github.com/ShivanshKaushik007/Busy",
+    blogUrl: "/blog/busy",
   },
   {
     id: "livenote",
-    num: "02",
+    num: "03",
     title: "LiveNote",
     tagline: "Concurrent collaborative document editor inspired by Google Docs",
     category: "Full-Stack",
@@ -57,6 +79,7 @@ const projects = [
     live: "https://livenote-tau.vercel.app/",
     github: "https://github.com/ShivanshKaushik007/livenote",
   },
+
   {
     id: "fineasy",
     num: "03",
@@ -349,15 +372,27 @@ const Work = () => {
 
                 {/* Bottom Action Links */}
                 <div className="pt-4 border-t border-white/[0.06] flex items-center justify-between">
-                  <a
-                    href={project.live}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-mono text-accent hover:text-white transition-colors"
-                  >
-                    <span>Launch Project</span>
-                    <ArrowUpRight className="w-3.5 h-3.5" />
-                  </a>
+                  <div className="flex items-center gap-3 sm:gap-4">
+                    <a
+                      href={project.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-xs font-mono text-accent hover:text-white transition-colors"
+                    >
+                      <span>Launch Project</span>
+                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    </a>
+
+                    {project.blogUrl && (
+                      <Link
+                        href={project.blogUrl}
+                        className="inline-flex items-center gap-1.5 text-xs font-mono text-titanium-400 hover:text-accent transition-colors"
+                      >
+                        <span>Deep Dive</span>
+                        <ArrowRight className="w-3 h-3" />
+                      </Link>
+                    )}
+                  </div>
 
                   <a
                     href={project.github}

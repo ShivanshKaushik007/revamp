@@ -258,9 +258,9 @@ function Band({
                 map={cardMap}
                 map-anisotropy={16}
                 clearcoat={isMobile ? 0 : 1}
-                clearcoatRoughness={0.15}
-                roughness={0.9}
-                metalness={0.8}
+                clearcoatRoughness={0.1}
+                roughness={0.3}
+                metalness={0.1}
               />
             </mesh>
             <mesh geometry={nodes.clip.geometry} material={materials.metal} material-roughness={0.3} />

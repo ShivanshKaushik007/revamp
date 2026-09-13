@@ -1,16 +1,26 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowUp, Terminal, Shield } from "lucide-react";
 
 export default function Footer() {
   return (
     <footer className="border-t border-white/[0.08] py-12 px-4 sm:px-6 bg-[#07080D]">
       <div className="container mx-auto max-w-7xl flex flex-col md:flex-row items-center justify-between gap-6">
-        {/* Left: Brand Monogram & Copyright */}
+        {/* Left: Brand Monogram & Copyright with Favicon */}
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-surface-elevated border border-white/10 flex items-center justify-center font-bold text-accent text-xs">
-            SK
+          <div className="w-8 h-8 rounded-lg bg-surface-elevated border border-white/10 flex items-center justify-center p-1 overflow-hidden shadow-sm">
+            <Image
+              src="/logo.png"
+              alt="Shivansh Kaushik Logo"
+              width={28}
+              height={28}
+              unoptimized
+              className="w-full h-full object-contain rounded-md"
+            />
           </div>
+
+
           <div>
             <p className="text-sm font-heading font-semibold text-white">
               Shivansh Kaushik

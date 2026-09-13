@@ -2,6 +2,7 @@
 
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, ArrowUpRight } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -41,9 +42,16 @@ const MobileNav = () => {
       </SheetTrigger>
       <SheetContent className="flex flex-col bg-[#0C0E16]/95 backdrop-blur-2xl border-l border-white/10 p-6">
         <div className="mt-12 mb-8 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-9 h-9 rounded-xl bg-surface-elevated border border-white/15 flex items-center justify-center font-bold text-accent">
-              SK
+          <div className="flex items-center gap-2.5">
+            <div className="w-9 h-9 rounded-xl bg-surface-elevated border border-white/15 flex items-center justify-center p-1.5 overflow-hidden shadow-sm">
+              <Image
+                src="/logo.png"
+                alt="Shivansh Kaushik Logo"
+                width={28}
+                height={28}
+                unoptimized
+                className="w-full h-full object-contain rounded-md"
+              />
             </div>
             <div>
               <h2 className="font-heading font-bold text-white text-lg">
@@ -53,6 +61,7 @@ const MobileNav = () => {
             </div>
           </div>
         </div>
+
 
         <nav className="flex flex-col gap-3 my-auto">
           {links.map((link, index) => {
