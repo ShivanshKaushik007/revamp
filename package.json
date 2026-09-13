@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@dimforge/rapier3d-compat": "^0.19.3",
+    "@emailjs/browser": "^4.4.1",
     "@nextui-org/tooltip": "^2.0.39",
     "@radix-ui/react-dialog": "^1.1.1",
     "@radix-ui/react-scroll-area": "^1.1.0",
