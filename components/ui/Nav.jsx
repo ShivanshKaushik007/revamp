@@ -2,59 +2,78 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { useActiveSection } from "@/lib/useActiveSection";
 
 const links = [
-  { name: "Overview", path: "/#home" },
-  { name: "Projects", path: "/#work" },
-  { name: "Career", path: "/#career" },
-  { name: "Stack", path: "/#skills" },
-  { name: "About", path: "/#about" },
-  { name: "Journal", path: "/blog" },
+  { name: "Overview", path: "/#home", id: "home" },
+  { name: "Projects", path: "/#work", id: "work" },
+  { name: "Career", path: "/#career", id: "career" },
+  { name: "Stack", path: "/#skills", id: "skills" },
+  { name: "About", path: "/#about", id: "about" },
+  { name: "Journal", path: "/blog", id: "blog" },
 ];
 
-const Nav = () => {
+const Nav = ({ activeSection: propActive, setActiveSection: propSetActive }) => {
+  const hookState = useActiveSection();
+  const activeSection = propActive !== undefined ? propActive : hookState.activeSection;
+  const setActiveSection = propSetActive || hookState.setActiveSection;
   const pathname = usePathname();
-  const [activeHash, setActiveHash] = useState("#home");
+  const isHomePage = pathname === "/" || pathname === "";
 
-  useEffect(() => {
-    if (pathname.includes("/blog")) {
-      setActiveHash("/blog");
+  const handleNavClick = (e, link) => {
+    if (link.id === "blog") {
+      setActiveSection("blog");
       return;
     }
 
-    const updateActiveHash = () => {
-      const hash = window.location.hash || "#home";
-      setActiveHash(hash);
-    };
-
-    updateActiveHash();
-    window.addEventListener("hashchange", updateActiveHash);
-    return () => window.removeEventListener("hashchange", updateActiveHash);
-  }, [pathname]);
+    if (isHomePage) {
+      e.preventDefault();
+      setActiveSection(link.id);
+      const targetEl = document.getElementById(link.id);
+      if (targetEl) {
+        targetEl.scrollIntoView({ behavior: "smooth" });
+        window.history.pushState(null, "", `#${link.id}`);
+      }
+    } else {
+      setActiveSection(link.id);
+    }
+  };
 
   return (
-    <nav className="flex items-center gap-1 p-1 rounded-full bg-white/[0.03] border border-white/5">
-      {links.map((link, index) => {
-        const isJournal = link.path === "/blog";
-        const isActive = isJournal
-          ? activeHash === "/blog"
-          : activeHash === link.path.replace("/", "");
+    <nav className="flex items-center gap-1 p-1 rounded-full bg-white/[0.03] border border-white/5 relative">
+      {links.map((link) => {
+        const isActive = activeSection === link.id;
 
         return (
           <Link
             href={link.path}
-            key={index}
-            onClick={() => setActiveHash(isJournal ? "/blog" : link.path.replace("/", ""))}
-            className={`relative px-4 py-1.5 rounded-full text-xs font-medium tracking-wide transition-all duration-200 ${
+            key={link.id}
+            onClick={(e) => handleNavClick(e, link)}
+            className={`relative px-4 py-1.5 rounded-full text-xs font-medium tracking-wide transition-colors duration-200 z-10 select-none ${
               isActive
-                ? "text-white bg-white/10 shadow-sm"
+                ? "text-white font-semibold"
                 : "text-titanium-400 hover:text-white hover:bg-white/[0.04]"
             }`}
           >
-            {link.name}
+            {/* Sliding Pill Background via Framer Motion */}
             {isActive && (
-              <span className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-3 h-0.5 rounded-full bg-accent" />
+              <motion.span
+                layoutId="activeNavPill"
+                transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                className="absolute inset-0 rounded-full bg-white/10 shadow-sm border border-white/10 -z-10"
+              />
+            )}
+
+            <span>{link.name}</span>
+
+            {/* Glowing Accent Indicator Under Active Tab */}
+            {isActive && (
+              <motion.span
+                layoutId="activeNavIndicator"
+                transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-3 h-0.5 rounded-full bg-accent shadow-[0_0_8px_#38bdf8]"
+              />
             )}
           </Link>
         );

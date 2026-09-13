@@ -5,35 +5,43 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, ArrowUpRight } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useActiveSection } from "@/lib/useActiveSection";
 import { Button } from "./button";
 
 const links = [
-  { name: "Overview", path: "/#home" },
-  { name: "Featured Projects", path: "/#work" },
-  { name: "Career & Leadership", path: "/#career" },
-  { name: "Technical Stack", path: "/#skills" },
-  { name: "About Blueprint", path: "/#about" },
-  { name: "Contact", path: "/#contact" },
-  { name: "Journal (Blog)", path: "/blog" },
+  { name: "Overview", path: "/#home", id: "home" },
+  { name: "Featured Projects", path: "/#work", id: "work" },
+  { name: "Career & Leadership", path: "/#career", id: "career" },
+  { name: "Technical Stack", path: "/#skills", id: "skills" },
+  { name: "About Blueprint", path: "/#about", id: "about" },
+  { name: "Contact", path: "/#contact", id: "contact" },
+  { name: "Journal (Blog)", path: "/blog", id: "blog" },
 ];
 
-const MobileNav = () => {
+const MobileNav = ({ activeSection: propActive, setActiveSection: propSetActive }) => {
+  const hookState = useActiveSection();
+  const activeSection = propActive !== undefined ? propActive : hookState.activeSection;
+  const setActiveSection = propSetActive || hookState.setActiveSection;
   const pathname = usePathname();
-  const [activeHash, setActiveHash] = useState("#home");
+  const isHomePage = pathname === "/" || pathname === "";
 
-  useEffect(() => {
-    if (pathname.includes("/blog")) {
-      setActiveHash("/blog");
+  const handleMobileNavClick = (link) => {
+    if (link.id === "blog") {
+      setActiveSection("blog");
       return;
     }
-    const updateActiveHash = () => {
-      setActiveHash(window.location.hash || "#home");
-    };
-    updateActiveHash();
-    window.addEventListener("hashchange", updateActiveHash);
-    return () => window.removeEventListener("hashchange", updateActiveHash);
-  }, [pathname]);
+
+    if (isHomePage) {
+      setActiveSection(link.id);
+      const targetEl = document.getElementById(link.id);
+      if (targetEl) {
+        targetEl.scrollIntoView({ behavior: "smooth" });
+        window.history.pushState(null, "", `#${link.id}`);
+      }
+    } else {
+      setActiveSection(link.id);
+    }
+  };
 
   return (
     <Sheet>
@@ -62,27 +70,23 @@ const MobileNav = () => {
           </div>
         </div>
 
-
-        <nav className="flex flex-col gap-3 my-auto">
+        <nav className="flex flex-col gap-2.5 my-auto">
           {links.map((link, index) => {
-            const isJournal = link.path === "/blog";
-            const isActive = isJournal
-              ? activeHash === "/blog"
-              : activeHash === link.path.replace("/", "");
+            const isActive = activeSection === link.id;
 
             return (
-              <SheetClose asChild key={index}>
+              <SheetClose asChild key={link.id}>
                 <Link
                   href={link.path}
-                  onClick={() => setActiveHash(isJournal ? "/blog" : link.path.replace("/", ""))}
+                  onClick={() => handleMobileNavClick(link)}
                   className={`px-4 py-3 rounded-xl text-base font-medium flex items-center justify-between transition-all ${
                     isActive
-                      ? "bg-accent/10 text-accent border border-accent/20"
+                      ? "bg-accent/15 text-accent border border-accent/30 font-semibold shadow-sm"
                       : "text-titanium-300 hover:text-white hover:bg-white/[0.04]"
                   }`}
                 >
                   <span>{link.name}</span>
-                  <span className="text-xs font-mono opacity-50">0{index + 1}</span>
+                  <span className="text-xs font-mono opacity-60">0{index + 1}</span>
                 </Link>
               </SheetClose>
             );
@@ -91,7 +95,11 @@ const MobileNav = () => {
 
         <div className="pt-6 border-t border-white/10">
           <SheetClose asChild>
-            <a href="#contact" className="w-full block">
+            <a
+              href="#contact"
+              onClick={() => handleMobileNavClick({ id: "contact" })}
+              className="w-full block"
+            >
               <Button className="w-full gap-2" variant="default">
                 <span>Start a Project</span>
                 <ArrowUpRight className="w-4 h-4" />
