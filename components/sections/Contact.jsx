@@ -442,10 +442,10 @@ const Contact = () => {
                       </div>
 
                       {/* Instant Fallback Actions */}
-                      <div className="flex flex-wrap items-center gap-2 pt-1 border-t border-amber-500/20">
+                      <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-2 pt-1 border-t border-amber-500/20">
                         <a
                           href={constructMailtoUrl()}
-                          className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-accent text-[#090A0F] font-sans font-semibold text-xs hover:bg-accent-hover transition-colors"
+                          className="inline-flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-lg bg-accent text-[#090A0F] font-sans font-semibold text-xs hover:bg-accent-hover transition-colors w-full sm:w-auto"
                         >
                           <Mail className="w-3.5 h-3.5" />
                           <span>Send via Email Client (mailto)</span>
@@ -454,7 +454,7 @@ const Contact = () => {
                         <button
                           type="button"
                           onClick={copyPreparedEmail}
-                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-titanium-200 hover:text-white text-xs font-mono transition-colors"
+                          className="inline-flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-lg bg-white/5 border border-white/10 text-titanium-200 hover:text-white text-xs font-mono transition-colors w-full sm:w-auto"
                         >
                           {copiedPrepared ? (
                             <>
@@ -473,13 +473,13 @@ const Contact = () => {
                   )}
 
                   {/* Submit button & direct options */}
-                  <div className="flex flex-wrap items-center justify-between gap-4 pt-2">
+                  <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 pt-2">
                     <Button
                       type="submit"
                       size="md"
                       variant="default"
                       disabled={loading}
-                      className="gap-2 font-semibold"
+                      className="w-full sm:w-auto justify-center gap-2 font-semibold"
                     >
                       {loading ? (
                         <>
@@ -496,7 +496,7 @@ const Contact = () => {
 
                     <a
                       href={constructMailtoUrl()}
-                      className="text-xs font-mono text-titanium-400 hover:text-accent transition-colors flex items-center gap-1.5"
+                      className="text-xs font-mono text-titanium-400 hover:text-accent transition-colors flex items-center justify-center sm:justify-start gap-1.5 py-1"
                     >
                       <Mail className="w-3.5 h-3.5" />
                       <span>Or send via mailto</span>

@@ -11,9 +11,9 @@ import {
   BookOpen,
   ArrowRight,
   Shield,
-  CheckCircle2,
   ExternalLink,
   Github,
+  ChevronDown,
 } from "lucide-react";
 
 export const metadata = {
@@ -98,9 +98,9 @@ export default function BusyBlogPage() {
           </p>
 
           {/* Author Chip & Tags */}
-          <div className="flex flex-wrap items-center justify-between gap-6 pt-6 border-t border-white/5">
+          <div className="flex flex-wrap items-center justify-between gap-4 sm:gap-6 pt-6 border-t border-white/5">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-surface-elevated border border-white/15 flex items-center justify-center font-bold text-accent text-sm">
+              <div className="w-10 h-10 rounded-full bg-surface-elevated border border-white/15 flex items-center justify-center font-bold text-accent text-sm shrink-0">
                 SK
               </div>
               <div>
@@ -114,7 +114,7 @@ export default function BusyBlogPage() {
             </div>
 
             {/* Tags */}
-            <div className="flex flex-wrap gap-1.5 max-w-xl">
+            <div className="flex flex-wrap gap-1.5 max-w-xl w-full sm:w-auto">
               {(frontmatter.tags || []).map((tag, idx) => (
                 <span
                   key={idx}
@@ -180,6 +180,34 @@ export default function BusyBlogPage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           {/* Main Reading Body */}
           <div className="lg:col-span-8 max-w-none">
+            {/* Collapsible Table of Contents for Mobile & Tablet (< 1024px) */}
+            <div className="block lg:hidden mb-8 p-4 sm:p-5 rounded-2xl bg-[#11131C] border border-white/10 shadow-lg">
+              <details className="group">
+                <summary className="flex items-center justify-between cursor-pointer list-none text-xs font-mono text-accent uppercase tracking-wider font-semibold select-none">
+                  <span className="flex items-center gap-2">
+                    <BookOpen className="w-4 h-4" />
+                    <span>Table of Contents ({headings.length} Sections)</span>
+                  </span>
+                  <ChevronDown className="w-4 h-4 text-titanium-400 group-open:rotate-180 transition-transform" />
+                </summary>
+                <nav className="mt-4 pt-3 border-t border-white/10 space-y-2 max-h-72 overflow-y-auto pr-2 no-scrollbar">
+                  {headings.map((h, idx) => (
+                    <a
+                      key={idx}
+                      href={`#${h.id}`}
+                      className={`block text-xs font-mono transition-colors py-1 ${
+                        h.level === 1
+                          ? "text-titanium-200 font-semibold"
+                          : "text-titanium-400 pl-3 border-l border-white/10 hover:text-white"
+                      }`}
+                    >
+                      {h.text}
+                    </a>
+                  ))}
+                </nav>
+              </details>
+            </div>
+
             <div
               className="prose-editorial"
               dangerouslySetInnerHTML={{ __html: htmlContent }}

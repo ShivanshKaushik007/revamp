@@ -60,8 +60,8 @@ const Hero = () => {
             className="lg:col-span-7 flex flex-col text-left z-10"
           >
             {/* Live Status & Time Chips */}
-            <div className="flex flex-wrap items-center gap-2.5 mb-6">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-accent/10 border border-accent/25 text-xs font-mono text-accent">
+            <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 mb-5 sm:mb-6">
+              <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-accent/10 border border-accent/25 text-[11px] sm:text-xs font-mono text-accent">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75" />
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-accent" />
@@ -69,13 +69,13 @@ const Hero = () => {
                 <span>Available for Engineering Roles</span>
               </div>
 
-              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/10 text-xs font-mono text-titanium-300">
-                <MapPin className="w-3.5 h-3.5 text-titanium-400" />
+              <div className="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-white/[0.03] border border-white/10 text-[11px] sm:text-xs font-mono text-titanium-300">
+                <MapPin className="w-3.5 h-3.5 text-titanium-400 shrink-0" />
                 <span>Lucknow, IN</span>
                 {currentTime && (
                   <>
                     <span className="text-white/20">•</span>
-                    <Clock className="w-3 h-3 text-titanium-400" />
+                    <Clock className="w-3 h-3 text-titanium-400 shrink-0" />
                     <span>{currentTime} IST</span>
                   </>
                 )}
@@ -100,29 +100,32 @@ const Hero = () => {
             </p>
 
             {/* Action Bar: Primary CTAs */}
-            <div className="flex flex-wrap items-center gap-3 sm:gap-4 mb-8">
-              <a href="#work">
-                <Button size="md" variant="default" className="gap-2 text-sm font-semibold">
-                  <span>Explore Work</span>
-                  <ArrowRight className="w-4 h-4" />
-                </Button>
-              </a>
+            <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 sm:gap-4 mb-8">
+              <div className="flex items-center gap-3 w-full sm:w-auto">
+                <a href="#work" className="flex-1 sm:flex-initial">
+                  <Button size="md" variant="default" className="w-full sm:w-auto justify-center gap-2 text-sm font-semibold">
+                    <span>Explore Work</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </Button>
+                </a>
 
-              <a
-                href="https://drive.google.com/file/d/1hGu1UvcQ64tME9tXWXm-22r_JTMZCFb9/view?usp=sharing"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button size="md" variant="secondary" className="gap-2 text-sm font-medium">
-                  <Download className="w-4 h-4 text-accent" />
-                  <span>Resume CV</span>
-                </Button>
-              </a>
+                <a
+                  href="https://drive.google.com/file/d/1hGu1UvcQ64tME9tXWXm-22r_JTMZCFb9/view?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 sm:flex-initial"
+                >
+                  <Button size="md" variant="secondary" className="w-full sm:w-auto justify-center gap-2 text-sm font-medium">
+                    <Download className="w-4 h-4 text-accent" />
+                    <span>Resume CV</span>
+                  </Button>
+                </a>
+              </div>
 
               {/* Copy Email Button */}
               <button
                 onClick={copyEmail}
-                className="group relative inline-flex items-center gap-2 h-12 px-4 rounded-full bg-white/[0.03] border border-white/10 hover:border-accent/40 text-xs sm:text-sm font-mono text-titanium-300 hover:text-white transition-all active:scale-[0.98]"
+                className="group relative inline-flex items-center justify-center gap-2 h-12 px-4 rounded-full bg-white/[0.03] border border-white/10 hover:border-accent/40 text-xs sm:text-sm font-mono text-titanium-300 hover:text-white transition-all active:scale-[0.98] w-full sm:w-auto"
                 title="Click to copy email address"
               >
                 {copied ? (
@@ -132,8 +135,8 @@ const Hero = () => {
                   </>
                 ) : (
                   <>
-                    <Copy className="w-4 h-4 text-titanium-400 group-hover:text-accent transition-colors" />
-                    <span className="truncate max-w-[180px] sm:max-w-none">{email}</span>
+                    <Copy className="w-4 h-4 text-titanium-400 group-hover:text-accent transition-colors flex-shrink-0" />
+                    <span className="break-all sm:break-normal">{email}</span>
                   </>
                 )}
               </button>

@@ -152,12 +152,12 @@ const Resume = () => {
         </div>
 
         {/* Tab Controls */}
-        <div className="flex flex-wrap items-center gap-2 mb-12 border-b border-white/[0.08] pb-4">
+        <div className="flex items-center gap-2 mb-10 sm:mb-12 border-b border-white/[0.08] pb-3 overflow-x-auto no-scrollbar flex-nowrap sm:flex-wrap">
           {tabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`flex items-center gap-2 px-4 py-2.5 rounded-full text-xs font-mono transition-all duration-200 ${
+              className={`flex items-center gap-2 px-4 py-2.5 rounded-full text-xs font-mono transition-all duration-200 shrink-0 ${
                 activeTab === tab.id
                   ? "bg-accent text-primary font-semibold shadow-lg shadow-sky-500/20"
                   : "bg-white/[0.03] border border-white/10 text-titanium-400 hover:text-white hover:border-white/20"
@@ -353,7 +353,7 @@ const Resume = () => {
 
               <div className="mt-6 pt-6 border-t border-white/10">
                 <a
-                  href="https://drive.google.com/file/d/1zK3OaLAySnfmUmpQZJyUfCMZeQn__r5I/view?usp=sharing"
+                  href="https://drive.google.com/file/d/1hGu1UvcQ64tME9tXWXm-22r_JTMZCFb9/view?usp=sharing"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-mono text-titanium-200 hover:text-white transition-all"

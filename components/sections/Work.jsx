@@ -171,12 +171,12 @@ const Work = () => {
         </div>
 
         {/* Category Filter Pills */}
-        <div className="flex flex-wrap items-center gap-2 mb-10">
+        <div className="flex items-center gap-2 mb-8 sm:mb-10 overflow-x-auto no-scrollbar pb-2 flex-nowrap sm:flex-wrap">
           {categories.map((cat, idx) => (
             <button
               key={idx}
               onClick={() => setActiveCategory(cat)}
-              className={`px-4 py-2 rounded-full text-xs font-mono transition-all duration-200 ${
+              className={`px-4 py-2 rounded-full text-xs font-mono transition-all duration-200 shrink-0 ${
                 activeCategory === cat
                   ? "bg-accent text-primary font-semibold shadow-lg shadow-sky-500/20"
                   : "bg-white/[0.03] border border-white/10 text-titanium-400 hover:text-white hover:border-white/20"
@@ -239,24 +239,24 @@ const Work = () => {
                 </div>
 
                 {/* CTAs */}
-                <div className="flex flex-wrap items-center gap-3">
-                  <a href={flagship.live} target="_blank" rel="noopener noreferrer">
-                    <Button size="md" variant="default" className="gap-2">
+                <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3">
+                  <a href={flagship.live} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+                    <Button size="md" variant="default" className="w-full sm:w-auto justify-center gap-2">
                       <span>Live Platform</span>
                       <ArrowUpRight className="w-4 h-4" />
                     </Button>
                   </a>
 
-                  <a href={flagship.github} target="_blank" rel="noopener noreferrer">
-                    <Button size="md" variant="secondary" className="gap-2">
+                  <a href={flagship.github} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+                    <Button size="md" variant="secondary" className="w-full sm:w-auto justify-center gap-2">
                       <Github className="w-4 h-4" />
                       <span>Source Code</span>
                     </Button>
                   </a>
 
                   {flagship.blogUrl && (
-                    <Link href={flagship.blogUrl}>
-                      <Button size="md" variant="outline" className="gap-2">
+                    <Link href={flagship.blogUrl} className="w-full sm:w-auto">
+                      <Button size="md" variant="outline" className="w-full sm:w-auto justify-center gap-2">
                         <BookOpen className="w-4 h-4" />
                         <span>Architecture Journal</span>
                       </Button>

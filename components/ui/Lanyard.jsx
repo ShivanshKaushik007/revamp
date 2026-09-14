@@ -19,14 +19,19 @@ const ReactBitsLanyard = dynamic(() => import("./ReactBitsLanyard"), {
 
 export default function Lanyard() {
   const [mounted, setMounted] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     setMounted(true);
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
   if (!mounted) {
     return (
-      <div className="w-full h-[500px] lg:h-[560px] flex items-center justify-center">
+      <div className="w-full h-[460px] sm:h-[520px] lg:h-[620px] flex items-center justify-center">
         <div className="flex items-center gap-2 text-xs font-mono text-titanium-400 px-4 py-2 rounded-full bg-white/[0.03] border border-white/10">
           <Compass className="w-4 h-4 text-accent animate-spin" />
           <span>Loading 3D Physics Lanyard...</span>
@@ -46,7 +51,11 @@ export default function Lanyard() {
         <span>Grab & fling the 3D lanyard pass</span>
       </div>
 
-      <ReactBitsLanyard position={[0, -0.6, 13.0]} fov={24} transparent={true} />
+      <ReactBitsLanyard
+        position={isMobile ? [0, -0.4, 14.8] : [0, -0.6, 13.0]}
+        fov={isMobile ? 26 : 24}
+        transparent={true}
+      />
     </div>
   );
 }
