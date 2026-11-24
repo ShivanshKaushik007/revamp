@@ -11,6 +11,8 @@ import {
   ArrowRight,
   ChevronDown,
 } from "lucide-react";
+import ClickSpark from "@/components/ui/ClickSpark";
+import StarBorder from "@/components/ui/StarBorder";
 
 const projects = [
   {
@@ -198,17 +200,26 @@ const Work = () => {
           {/* Filter Tabs */}
           <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-1">
             {categories.map((cat) => (
-              <button
+              <ClickSpark
                 key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`px-3.5 py-1.5 rounded-full text-xs font-mono transition-colors shrink-0 ${
-                  activeCategory === cat
-                    ? "bg-titanium-50 text-primary font-semibold"
-                    : "text-titanium-400 hover:text-titanium-100 border border-surface-border"
-                }`}
+                className="inline-flex !w-auto !h-auto shrink-0"
+                sparkColor={["#F27D42", "#FAF8F5"]}
+                sparkSize={8}
+                sparkRadius={18}
+                sparkCount={6}
+                duration={340}
               >
-                {cat}
-              </button>
+                <button
+                  onClick={() => setActiveCategory(cat)}
+                  className={`px-3.5 py-1.5 rounded-full text-xs font-mono transition-colors shrink-0 ${
+                    activeCategory === cat
+                      ? "bg-titanium-50 text-primary font-semibold"
+                      : "text-titanium-400 hover:text-titanium-100 border border-surface-border"
+                  }`}
+                >
+                  {cat}
+                </button>
+              </ClickSpark>
             ))}
           </div>
         </div>
@@ -313,11 +324,26 @@ const Work = () => {
                         {project.blogUrl && (
                           <Link
                             href={project.blogUrl}
-                            className="inline-flex items-center gap-1.5 text-accent hover:text-accent-hover transition-colors ml-auto"
+                            className="ml-auto inline-flex"
                           >
-                            <BookOpen className="w-3.5 h-3.5" />
-                            <span>Read build log</span>
-                            <ArrowRight className="w-3 h-3" />
+                            <StarBorder
+                              as="span"
+                              color="#F27D42"
+                              trailColor="#FFD36E"
+                              backgroundColor="#0C0C0E"
+                              textColor="#F27D42"
+                              borderColor="rgba(242, 125, 66, 0.28)"
+                              radius={999}
+                              thickness={1.1}
+                              duration={4.5}
+                              glow={0.45}
+                              hover="reveal"
+                              className="!px-3.5 !py-1.5 text-xs font-mono"
+                            >
+                              <BookOpen className="w-3.5 h-3.5" />
+                              <span>Read build log</span>
+                              <ArrowRight className="w-3 h-3" />
+                            </StarBorder>
                           </Link>
                         )}
                       </div>

@@ -8,6 +8,8 @@ import MobileNav from "./MobileNav";
 import { ArrowUpRight } from "lucide-react";
 import { useActiveSection } from "@/lib/useActiveSection";
 import { usePathname } from "next/navigation";
+import StarBorder from "./StarBorder";
+import ClickSpark from "./ClickSpark";
 
 const Header = () => {
   const { activeSection, setActiveSection } = useActiveSection();
@@ -67,20 +69,36 @@ const Header = () => {
 
         {/* Action & Mobile Nav */}
         <div className="flex items-center gap-3">
-          <a
-            href={isHomePage ? "#contact" : "/#contact"}
-            onClick={handleContactClick}
-            className="hidden sm:inline-flex"
-          >
-            <Button
-              size="sm"
-              variant={isContactActive ? "primary" : "secondary"}
-              className="gap-1.5 text-xs"
+          <div className="hidden sm:inline-flex">
+            <ClickSpark
+              className="inline-flex !w-auto !h-auto"
+              sparkColor={["#F27D42", "#FFD36E", "#FAF8F5"]}
+              sparkSize={9}
+              sparkRadius={20}
+              sparkCount={8}
+              duration={380}
             >
-              <span>Say hello</span>
-              <ArrowUpRight className="w-3.5 h-3.5" />
-            </Button>
-          </a>
+              <StarBorder
+                as="a"
+                href={isHomePage ? "#contact" : "/#contact"}
+                onClick={handleContactClick}
+                color="#F27D42"
+                trailColor="#FFD36E"
+                backgroundColor={isContactActive ? "#F27D42" : "#18181D"}
+                textColor={isContactActive ? "#0C0C0E" : "#F2EFE9"}
+                borderColor="rgba(242, 239, 233, 0.12)"
+                radius={999}
+                thickness={1.2}
+                duration={4.2}
+                glow={0.5}
+                hover="reveal"
+                className="!px-4 !py-2 text-xs font-semibold"
+              >
+                <span>Say hello</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </StarBorder>
+            </ClickSpark>
+          </div>
           <div className="md:hidden">
             <MobileNav activeSection={activeSection} setActiveSection={setActiveSection} />
           </div>

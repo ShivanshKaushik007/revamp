@@ -8,6 +8,8 @@ import { Download, ArrowRight, Copy, Check } from "lucide-react";
 import { FaGithub, FaLinkedinIn, FaInstagram } from "react-icons/fa";
 import { SiLeetcode } from "react-icons/si";
 import Lanyard from "@/components/ui/Lanyard";
+import StarBorder from "@/components/ui/StarBorder";
+import ClickSpark from "@/components/ui/ClickSpark";
 
 const highlights = [
   {
@@ -106,41 +108,82 @@ const Hero = () => {
 
             {/* Primary Actions */}
             <div className="flex flex-wrap items-center gap-3 mb-8">
-              <a href="#work">
-                <Button size="md" variant="primary" className="gap-2">
+              <ClickSpark
+                className="inline-flex !w-auto !h-auto"
+                sparkColor={["#F27D42", "#FFD36E", "#FAF8F5"]}
+                sparkSize={11}
+                sparkRadius={26}
+                sparkCount={10}
+                duration={420}
+              >
+                <StarBorder
+                  as="a"
+                  href="#work"
+                  color="#F27D42"
+                  trailColor="#FFD36E"
+                  backgroundColor="#18181D"
+                  textColor="#FAF8F5"
+                  borderColor="rgba(242, 125, 66, 0.35)"
+                  radius={999}
+                  thickness={1.4}
+                  duration={3.8}
+                  glow={0.65}
+                  sparkle={true}
+                  hover="lap"
+                  className="!px-6 !py-3 text-sm font-semibold"
+                >
                   <span>See my work</span>
-                  <ArrowRight className="w-4 h-4" />
-                </Button>
-              </a>
+                  <ArrowRight className="w-4 h-4 text-accent" />
+                </StarBorder>
+              </ClickSpark>
 
-              <a
-                href="https://drive.google.com/file/d/1hGu1UvcQ64tME9tXWXm-22r_JTMZCFb9/view?usp=sharing"
-                target="_blank"
-                rel="noopener noreferrer"
+              <ClickSpark
+                className="inline-flex !w-auto !h-auto"
+                sparkColor={["#F27D42", "#FAF8F5"]}
+                sparkSize={9}
+                sparkRadius={22}
+                sparkCount={8}
+                duration={380}
               >
-                <Button size="md" variant="secondary" className="gap-2">
-                  <Download className="w-4 h-4 text-accent" />
-                  <span>Resume</span>
-                </Button>
-              </a>
+                <a
+                  href="https://drive.google.com/file/d/1hGu1UvcQ64tME9tXWXm-22r_JTMZCFb9/view?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button size="md" variant="secondary" className="gap-2">
+                    <Download className="w-4 h-4 text-accent" />
+                    <span>Resume</span>
+                  </Button>
+                </a>
+              </ClickSpark>
 
-              <button
-                onClick={copyEmail}
-                className="group inline-flex items-center gap-2 h-11 px-4 rounded-full bg-transparent border border-surface-border hover:border-titanium-500 text-xs sm:text-sm font-mono text-titanium-300 hover:text-titanium-50 transition-colors"
-                title="Copy email address"
+              <ClickSpark
+                className="inline-flex !w-auto !h-auto"
+                sparkColor={["#5BB98C", "#F27D42", "#FAF8F5"]}
+                sparkSize={9}
+                sparkRadius={22}
+                sparkCount={8}
+                ring={true}
+                duration={400}
               >
-                {copied ? (
-                  <>
-                    <Check className="w-3.5 h-3.5 text-[#5BB98C]" />
-                    <span className="text-[#5BB98C]">copied!</span>
-                  </>
-                ) : (
-                  <>
-                    <Copy className="w-3.5 h-3.5 text-titanium-400 group-hover:text-accent transition-colors" />
-                    <span>{email}</span>
-                  </>
-                )}
-              </button>
+                <button
+                  onClick={copyEmail}
+                  className="group inline-flex items-center gap-2 h-11 px-4 rounded-full bg-transparent border border-surface-border hover:border-titanium-500 text-xs sm:text-sm font-mono text-titanium-300 hover:text-titanium-50 transition-colors"
+                  title="Copy email address"
+                >
+                  {copied ? (
+                    <>
+                      <Check className="w-3.5 h-3.5 text-[#5BB98C]" />
+                      <span className="text-[#5BB98C]">copied!</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="w-3.5 h-3.5 text-titanium-400 group-hover:text-accent transition-colors" />
+                      <span>{email}</span>
+                    </>
+                  )}
+                </button>
+              </ClickSpark>
             </div>
 
             {/* Social Links */}

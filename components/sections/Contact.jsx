@@ -18,6 +18,8 @@ import {
 import { FaGithub, FaLinkedinIn, FaInstagram } from "react-icons/fa";
 import { SiLeetcode } from "react-icons/si";
 import { Button } from "@/components/ui/button";
+import StarBorder from "@/components/ui/StarBorder";
+import ClickSpark from "@/components/ui/ClickSpark";
 
 const directChannels = [
   {
@@ -439,25 +441,43 @@ const Contact = () => {
                   )}
 
                   <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 pt-2">
-                    <Button
-                      type="submit"
-                      size="md"
-                      variant="primary"
-                      disabled={loading}
-                      className="gap-2"
+                    <ClickSpark
+                      className="inline-flex !w-full sm:!w-auto !h-auto"
+                      sparkColor={["#F27D42", "#FFD36E", "#FAF8F5"]}
+                      sparkSize={10}
+                      sparkRadius={24}
+                      sparkCount={10}
+                      duration={420}
                     >
-                      {loading ? (
-                        <>
-                          <Loader2 className="w-4 h-4 animate-spin" />
-                          <span>Sending...</span>
-                        </>
-                      ) : (
-                        <>
-                          <span>Send message</span>
-                          <Send className="w-3.5 h-3.5" />
-                        </>
-                      )}
-                    </Button>
+                      <StarBorder
+                        type="submit"
+                        disabled={loading}
+                        color="#F27D42"
+                        trailColor="#FFD36E"
+                        backgroundColor="#F27D42"
+                        textColor="#0C0C0E"
+                        borderColor="rgba(255, 211, 110, 0.45)"
+                        radius={999}
+                        thickness={1.4}
+                        duration={3.8}
+                        glow={0.55}
+                        sparkle={true}
+                        hover="lap"
+                        className="w-full sm:w-auto !px-6 !py-3 text-sm font-semibold"
+                      >
+                        {loading ? (
+                          <>
+                            <Loader2 className="w-4 h-4 animate-spin" />
+                            <span>Sending...</span>
+                          </>
+                        ) : (
+                          <>
+                            <span>Send message</span>
+                            <Send className="w-3.5 h-3.5" />
+                          </>
+                        )}
+                      </StarBorder>
+                    </ClickSpark>
 
                     <a
                       href={constructMailtoUrl()}

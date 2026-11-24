@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { ArrowRight, BookOpen, MapPin } from "lucide-react";
+import ClickSpark from "@/components/ui/ClickSpark";
 
 const CrystalizedBall = dynamic(
   () => import("@/components/ui/CrystalizedBall"),
@@ -140,18 +141,27 @@ const About = () => {
                   {orbMoods.map((mood) => {
                     const active = activeMood.id === mood.id;
                     return (
-                      <button
+                      <ClickSpark
                         key={mood.id}
-                        type="button"
-                        onClick={() => setActiveMood(mood)}
-                        className={`px-2.5 py-1 rounded-full text-[11px] font-mono transition-colors ${
-                          active
-                            ? "bg-titanium-50 text-primary font-semibold"
-                            : "text-titanium-400 hover:text-titanium-100"
-                        }`}
+                        className="inline-flex !w-auto !h-auto"
+                        sparkColor={mood.color}
+                        sparkSize={8}
+                        sparkRadius={18}
+                        sparkCount={6}
+                        duration={360}
                       >
-                        {mood.label}
-                      </button>
+                        <button
+                          type="button"
+                          onClick={() => setActiveMood(mood)}
+                          className={`px-2.5 py-1 rounded-full text-[11px] font-mono transition-colors ${
+                            active
+                              ? "bg-titanium-50 text-primary font-semibold"
+                              : "text-titanium-400 hover:text-titanium-100"
+                          }`}
+                        >
+                          {mood.label}
+                        </button>
+                      </ClickSpark>
                     );
                   })}
                 </div>
