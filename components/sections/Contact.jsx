@@ -7,7 +7,7 @@ import {
   Mail,
   Phone,
   MapPin,
-  Send,
+  ArrowUp,
   CheckCircle2,
   Copy,
   ArrowUpRight,
@@ -18,8 +18,7 @@ import {
 import { FaGithub, FaLinkedinIn, FaInstagram } from "react-icons/fa";
 import { SiLeetcode } from "react-icons/si";
 import { Button } from "@/components/ui/button";
-import StarBorder from "@/components/ui/StarBorder";
-import ClickSpark from "@/components/ui/ClickSpark";
+import SlingButton from "@/components/ui/SlingButton";
 
 const directChannels = [
   {
@@ -440,44 +439,38 @@ const Contact = () => {
                     </motion.div>
                   )}
 
-                  <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 pt-2">
-                    <ClickSpark
-                      className="inline-flex !w-full sm:!w-auto !h-auto"
-                      sparkColor={["#F27D42", "#FFD36E", "#FAF8F5"]}
-                      sparkSize={10}
-                      sparkRadius={24}
-                      sparkCount={10}
-                      duration={420}
-                    >
-                      <StarBorder
-                        type="submit"
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 pt-3">
+                    <div className="flex items-center gap-4">
+                      <SlingButton
+                        onSend={() => formRef.current?.requestSubmit()}
                         disabled={loading}
-                        color="#F27D42"
-                        trailColor="#FFD36E"
-                        backgroundColor="#F27D42"
-                        textColor="#0C0C0E"
-                        borderColor="rgba(255, 211, 110, 0.45)"
-                        radius={999}
-                        thickness={1.4}
-                        duration={3.8}
-                        glow={0.55}
-                        sparkle={true}
-                        hover="lap"
-                        className="w-full sm:w-auto !px-6 !py-3 text-sm font-semibold"
+                        padColor="#F27D42"
+                        iconColor="#0C0C0E"
+                        accentColor="#FFD36E"
+                        wellColor="#1E1E24"
+                        bandColor="#6B6861"
+                        size={52}
+                        strokeWidth={2.5}
+                        armAt={42}
+                        maxPull={120}
+                        ariaLabel="Send message"
                       >
                         {loading ? (
-                          <>
-                            <Loader2 className="w-4 h-4 animate-spin" />
-                            <span>Sending...</span>
-                          </>
+                          <Loader2 className="w-5 h-5 animate-spin" />
                         ) : (
-                          <>
-                            <span>Send message</span>
-                            <Send className="w-3.5 h-3.5" />
-                          </>
+                          <ArrowUp className="w-5 h-5" strokeWidth={2.25} />
                         )}
-                      </StarBorder>
-                    </ClickSpark>
+                      </SlingButton>
+
+                      <div className="flex flex-col">
+                        <span className="text-sm font-heading font-semibold text-titanium-50">
+                          {loading ? "Sending message..." : "Send message"}
+                        </span>
+                        <span className="text-[11px] font-mono text-titanium-400">
+                          {loading ? "routing to inbox" : "pull & sling, or tap"}
+                        </span>
+                      </div>
+                    </div>
 
                     <a
                       href={constructMailtoUrl()}

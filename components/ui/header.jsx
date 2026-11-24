@@ -46,7 +46,7 @@ const Header = () => {
           }}
           className="flex items-center gap-2.5 group"
         >
-          <div className="w-7 h-7 rounded-md bg-surface-elevated border border-surface-border flex items-center justify-center p-0.5 group-hover:border-accent/50 transition-colors overflow-hidden">
+          {/* <div className="w-7 h-7 rounded-md bg-surface-elevated border border-surface-border flex items-center justify-center p-0.5 group-hover:border-accent/50 transition-colors overflow-hidden">
             <Image
               src="/logo.png"
               alt="Shivansh Kaushik Logo"
@@ -56,9 +56,9 @@ const Header = () => {
               unoptimized
               className="w-full h-full object-contain rounded-sm"
             />
-          </div>
-          <span className="font-heading font-bold text-titanium-50 text-base tracking-tight">
-            shivansh<span className="text-accent">.</span>
+          </div> */}
+          <span className="font-heading font-bold text-titanium-50 text-2xl tracking-tight">
+            Shivansh<span className="text-accent">.</span>
           </span>
         </Link>
 
