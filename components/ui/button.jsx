@@ -10,21 +10,21 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-accent text-[#090A0F] font-semibold hover:bg-accent-hover shadow-lg shadow-sky-500/20 active:scale-[0.98]",
+          "bg-titanium-50 text-primary font-semibold hover:bg-accent hover:text-primary active:scale-[0.98]",
         primary:
-          "bg-surface-elevated text-white border border-white/10 hover:border-white/20 hover:bg-surface-elevated/80 active:scale-[0.98]",
+          "bg-accent text-primary font-semibold hover:bg-accent-hover active:scale-[0.98]",
         outline:
-          "border border-accent/40 bg-transparent text-accent hover:border-accent hover:bg-accent/10 active:scale-[0.98]",
+          "border border-surface-border bg-transparent text-titanium-100 hover:border-accent/60 hover:text-accent active:scale-[0.98]",
         secondary:
-          "bg-white/[0.05] border border-white/10 text-titanium-200 hover:text-white hover:bg-white/10 hover:border-white/20 active:scale-[0.98]",
+          "bg-surface-elevated border border-surface-border text-titanium-100 hover:border-titanium-500 hover:bg-surface-muted active:scale-[0.98]",
         ghost:
-          "text-titanium-300 hover:text-white hover:bg-white/[0.06]",
+          "text-titanium-300 hover:text-titanium-50 hover:bg-white/[0.05]",
       },
       size: {
         default: "h-11 px-6",
         sm: "h-9 px-4 text-xs",
-        md: "h-12 px-6 text-sm",
-        lg: "h-14 px-8 text-sm tracking-wide",
+        md: "h-11 px-6 text-sm",
+        lg: "h-13 px-8 text-sm tracking-wide",
         icon: "h-10 w-10 p-0",
       },
     },
@@ -50,4 +50,3 @@ const Button = React.forwardRef(
 Button.displayName = "Button";
 
 export { Button, buttonVariants };
-

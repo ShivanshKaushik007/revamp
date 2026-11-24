@@ -9,13 +9,13 @@ import { useActiveSection } from "@/lib/useActiveSection";
 import { Button } from "./button";
 
 const links = [
-  { name: "Overview", path: "/#home", id: "home" },
-  { name: "Featured Projects", path: "/#work", id: "work" },
-  { name: "Career & Leadership", path: "/#career", id: "career" },
-  { name: "Technical Stack", path: "/#skills", id: "skills" },
-  { name: "About Blueprint", path: "/#about", id: "about" },
+  { name: "Home", path: "/#home", id: "home" },
+  { name: "Work", path: "/#work", id: "work" },
+  { name: "Experience", path: "/#career", id: "career" },
+  { name: "Toolkit", path: "/#skills", id: "skills" },
+  { name: "About", path: "/#about", id: "about" },
   { name: "Contact", path: "/#contact", id: "contact" },
-  { name: "Journal (Blog)", path: "/blog", id: "blog" },
+  { name: "Notes", path: "/blog", id: "blog" },
 ];
 
 const MobileNav = ({ activeSection: propActive, setActiveSection: propSetActive }) => {
@@ -45,32 +45,30 @@ const MobileNav = ({ activeSection: propActive, setActiveSection: propSetActive 
 
   return (
     <Sheet>
-      <SheetTrigger className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-titanium-200 hover:text-white hover:border-accent/40 transition-all">
-        <Menu className="w-5 h-5 text-accent" />
+      <SheetTrigger className="w-9 h-9 rounded-full bg-surface border border-surface-border flex items-center justify-center text-titanium-200 hover:text-titanium-50 hover:border-accent/50 transition-colors">
+        <Menu className="w-4 h-4" />
       </SheetTrigger>
-      <SheetContent className="flex flex-col bg-[#0C0E16]/95 backdrop-blur-2xl border-l border-white/10 p-6">
-        <div className="mt-12 mb-8 flex items-center justify-between">
-          <div className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-xl bg-surface-elevated border border-white/15 flex items-center justify-center p-1.5 overflow-hidden shadow-sm">
-              <Image
-                src="/logo.png"
-                alt="Shivansh Kaushik Logo"
-                width={28}
-                height={28}
-                unoptimized
-                className="w-full h-full object-contain rounded-md"
-              />
-            </div>
-            <div>
-              <h2 className="font-heading font-bold text-white text-lg">
-                Shivansh<span className="text-accent">.</span>
-              </h2>
-              <p className="text-xs font-mono text-titanium-400">Full-Stack Engineer</p>
-            </div>
+      <SheetContent className="flex flex-col bg-primary/95 backdrop-blur-xl border-l border-surface-border p-6">
+        <div className="mt-10 mb-8 flex items-center gap-2.5">
+          <div className="w-8 h-8 rounded-md bg-surface-elevated border border-surface-border flex items-center justify-center p-1 overflow-hidden">
+            <Image
+              src="/logo.png"
+              alt="Shivansh Kaushik Logo"
+              width={24}
+              height={24}
+              unoptimized
+              className="w-full h-full object-contain rounded-sm"
+            />
+          </div>
+          <div>
+            <h2 className="font-heading font-bold text-titanium-50 text-base">
+              shivansh<span className="text-accent">.</span>
+            </h2>
+            <p className="text-xs font-mono text-titanium-400">Software Engineer</p>
           </div>
         </div>
 
-        <nav className="flex flex-col gap-2.5 my-auto">
+        <nav className="flex flex-col gap-1.5 my-auto">
           {links.map((link, index) => {
             const isActive = activeSection === link.id;
 
@@ -79,29 +77,29 @@ const MobileNav = ({ activeSection: propActive, setActiveSection: propSetActive 
                 <Link
                   href={link.path}
                   onClick={() => handleMobileNavClick(link)}
-                  className={`px-4 py-3 rounded-xl text-base font-medium flex items-center justify-between transition-all ${
+                  className={`px-3.5 py-2.5 rounded-lg text-sm font-medium flex items-center justify-between transition-colors ${
                     isActive
-                      ? "bg-accent/15 text-accent border border-accent/30 font-semibold shadow-sm"
-                      : "text-titanium-300 hover:text-white hover:bg-white/[0.04]"
+                      ? "bg-accent/15 text-accent border border-accent/25"
+                      : "text-titanium-300 hover:text-titanium-50 hover:bg-white/[0.04]"
                   }`}
                 >
                   <span>{link.name}</span>
-                  <span className="text-xs font-mono opacity-60">0{index + 1}</span>
+                  <span className="text-[11px] font-mono opacity-60">0{index + 1}</span>
                 </Link>
               </SheetClose>
             );
           })}
         </nav>
 
-        <div className="pt-6 border-t border-white/10">
+        <div className="pt-6 border-t border-surface-border">
           <SheetClose asChild>
             <a
-              href="#contact"
+              href={isHomePage ? "#contact" : "/#contact"}
               onClick={() => handleMobileNavClick({ id: "contact" })}
               className="w-full block"
             >
-              <Button className="w-full gap-2" variant="default">
-                <span>Start a Project</span>
+              <Button className="w-full gap-2" variant="primary">
+                <span>Say hello</span>
                 <ArrowUpRight className="w-4 h-4" />
               </Button>
             </a>

@@ -6,12 +6,12 @@ import { motion } from "framer-motion";
 import { useActiveSection } from "@/lib/useActiveSection";
 
 const links = [
-  { name: "Overview", path: "/#home", id: "home" },
-  { name: "Projects", path: "/#work", id: "work" },
-  { name: "Career", path: "/#career", id: "career" },
-  { name: "Stack", path: "/#skills", id: "skills" },
+  { name: "Home", path: "/#home", id: "home" },
+  { name: "Work", path: "/#work", id: "work" },
+  { name: "Experience", path: "/#career", id: "career" },
+  { name: "Toolkit", path: "/#skills", id: "skills" },
   { name: "About", path: "/#about", id: "about" },
-  { name: "Journal", path: "/blog", id: "blog" },
+  { name: "Notes", path: "/blog", id: "blog" },
 ];
 
 const Nav = ({ activeSection: propActive, setActiveSection: propSetActive }) => {
@@ -41,7 +41,7 @@ const Nav = ({ activeSection: propActive, setActiveSection: propSetActive }) => 
   };
 
   return (
-    <nav className="flex items-center gap-1 p-1 rounded-full bg-white/[0.03] border border-white/5 relative">
+    <nav className="flex items-center gap-1 relative">
       {links.map((link) => {
         const isActive = activeSection === link.id;
 
@@ -50,29 +50,19 @@ const Nav = ({ activeSection: propActive, setActiveSection: propSetActive }) => 
             href={link.path}
             key={link.id}
             onClick={(e) => handleNavClick(e, link)}
-            className={`relative px-4 py-1.5 rounded-full text-xs font-medium tracking-wide transition-colors duration-200 z-10 select-none ${
+            className={`relative px-3.5 py-1.5 text-[13px] font-medium transition-colors duration-200 select-none ${
               isActive
-                ? "text-white font-semibold"
-                : "text-titanium-400 hover:text-white hover:bg-white/[0.04]"
+                ? "text-titanium-50"
+                : "text-titanium-400 hover:text-titanium-100"
             }`}
           >
-            {/* Sliding Pill Background via Framer Motion */}
-            {isActive && (
-              <motion.span
-                layoutId="activeNavPill"
-                transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                className="absolute inset-0 rounded-full bg-white/10 shadow-sm border border-white/10 -z-10"
-              />
-            )}
-
             <span>{link.name}</span>
 
-            {/* Glowing Accent Indicator Under Active Tab */}
             {isActive && (
               <motion.span
-                layoutId="activeNavIndicator"
-                transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-3 h-0.5 rounded-full bg-accent shadow-[0_0_8px_#38bdf8]"
+                layoutId="activeNavUnderline"
+                transition={{ type: "spring", stiffness: 420, damping: 32 }}
+                className="absolute bottom-0 left-3.5 right-3.5 h-[1.5px] bg-accent rounded-full"
               />
             )}
           </Link>

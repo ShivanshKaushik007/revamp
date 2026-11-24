@@ -1,7 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
-import { motion } from "framer-motion";
+import React from "react";
 import {
   FaReact,
   FaNodeJs,
@@ -21,118 +20,92 @@ import {
   SiWebrtc,
   SiPostgresql,
 } from "react-icons/si";
-import { Terminal, Cpu, Database, Layout, Sparkles, Layers } from "lucide-react";
+import { Sparkles } from "lucide-react";
 
-const skillCategories = [
+const groups = [
   {
-    category: "Languages & Runtimes",
-    description: "Core programming paradigms, algorithms, and system foundations",
-    icon: <Terminal className="w-4 h-4 text-accent" />,
-    skills: [
-      { name: "Java", level: "Advanced", note: "DSA, OOP & Backend architecture", icon: <FaJava /> },
-      { name: "TypeScript", level: "Advanced", note: "Type-safe full-stack workflows", icon: <SiTypescript /> },
-      { name: "JavaScript", level: "Expert", note: "ESNext, Event Loop, Async runtime", icon: <FaJs /> },
-      { name: "Python", level: "Intermediate", note: "Scripting, AI APIs & data tools", icon: <FaPython /> },
+    title: "Languages",
+    tools: [
+      { name: "TypeScript", where: "End-to-end strict types across Next.js & Node", icon: <SiTypescript /> },
+      { name: "JavaScript", where: "Browser runtime, async flows, DOM work", icon: <FaJs /> },
+      { name: "Java", where: "DSA, OOP & core CS problem solving", icon: <FaJava /> },
+      { name: "Python", where: "Quick scripts & AI API integrations", icon: <FaPython /> },
     ],
   },
   {
-    category: "Real-Time & Backend Systems",
-    description: "Low-latency networking, event loops, and distributed communication",
-    icon: <Cpu className="w-4 h-4 text-accent" />,
-    skills: [
-      { name: "Node.js", level: "Advanced", note: "Express microservices, Auth, REST", icon: <FaNodeJs /> },
-      { name: "Socket.IO", level: "Advanced", note: "Bi-directional live messaging", icon: <SiSocketdotio /> },
-      { name: "WebRTC", level: "Proficient", note: "P2P audio/video streaming & signaling", icon: <SiWebrtc /> },
-      { name: "Redis", level: "Proficient", note: "Socket adapter, pub/sub & caching", icon: <SiRedis /> },
+    title: "Frontend & UI",
+    tools: [
+      { name: "Next.js", where: "App Router, Server Actions, SSR", icon: <SiNextdotjs /> },
+      { name: "React", where: "Component systems, hooks, client state", icon: <FaReact /> },
+      { name: "Tailwind CSS", where: "Custom tokens, responsive layouts", icon: <SiTailwindcss /> },
+      { name: "Framer Motion", where: "Layout transitions & tactile springs", icon: <Sparkles className="w-4 h-4" /> },
     ],
   },
   {
-    category: "Frontend & Design Engineering",
-    description: "Component architecture, fluid motion, and responsive interfaces",
-    icon: <Layout className="w-4 h-4 text-accent" />,
-    skills: [
-      { name: "React.js", level: "Advanced", note: "Hooks, custom reconcilers, state", icon: <FaReact /> },
-      { name: "Next.js", level: "Advanced", note: "App Router, SSR, Server Actions", icon: <SiNextdotjs /> },
-      { name: "Tailwind CSS", level: "Expert", note: "Design systems, responsive tokens", icon: <SiTailwindcss /> },
-      { name: "Framer Motion", level: "Advanced", note: "Spring physics & micro-interactions", icon: <Sparkles /> },
+    title: "Backend & Real-Time",
+    tools: [
+      { name: "Node.js", where: "Express APIs, auth middleware, cron jobs", icon: <FaNodeJs /> },
+      { name: "Socket.IO", where: "Rooms, typing indicators, live threads", icon: <SiSocketdotio /> },
+      { name: "WebRTC", where: "1:1 peer audio/video & ICE signaling", icon: <SiWebrtc /> },
+      { name: "Redis", where: "Socket.IO pub/sub adapter & caching", icon: <SiRedis /> },
     ],
   },
   {
-    category: "Databases & Cloud Tooling",
-    description: "Data modeling, version control, and containerization",
-    icon: <Database className="w-4 h-4 text-accent" />,
-    skills: [
-      { name: "MongoDB", level: "Advanced", note: "Document schemas & indexing", icon: <SiMongodb /> },
-      { name: "PostgreSQL", level: "Proficient", note: "Relational queries & ACID guarantees", icon: <SiPostgresql /> },
-      { name: "Docker", level: "Intermediate", note: "Containerized deployment environments", icon: <FaDocker /> },
-      { name: "Git & GitHub", level: "Advanced", note: "Trunk-based branch flow, CI/CD", icon: <FaGitAlt /> },
+    title: "Data & Tooling",
+    tools: [
+      { name: "PostgreSQL", where: "RLS policies, relational schemas, triggers", icon: <SiPostgresql /> },
+      { name: "MongoDB", where: "Chat messages, threads & user models", icon: <SiMongodb /> },
+      { name: "Docker", where: "Local containers & reproducible builds", icon: <FaDocker /> },
+      { name: "Git & GitHub", where: "Branching, PR reviews, team workflows", icon: <FaGitAlt /> },
     ],
   },
 ];
 
 const Skills = () => {
-  const [activeCategoryIndex, setActiveCategoryIndex] = useState(0);
-
   return (
-    <section id="skills" className="py-20 sm:py-28 relative">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-12 max-w-7xl">
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6">
+    <section id="skills" className="py-20 sm:py-24 border-t border-surface-border">
+      <div className="container mx-auto px-4 sm:px-6 max-w-6xl">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
           <div>
-            <div className="flex items-center gap-2 text-xs font-mono text-accent uppercase tracking-widest mb-3">
-              <Layers className="w-3.5 h-3.5" />
-              <span>Technical Ecosystem</span>
-            </div>
-            <h2 className="h2 text-white font-heading font-extrabold">
-              Stack & Architectural Radar.
+            <p className="text-xs font-mono text-accent uppercase tracking-widest mb-2.5">
+              03 / Toolkit
+            </p>
+            <h2 className="h2 text-titanium-50">
+              Tools I{" "}
+              <span className="font-editorial text-accent font-normal">
+                actually ship with
+              </span>
             </h2>
           </div>
-          <p className="max-w-md text-sm sm:text-base text-titanium-300 font-sans leading-relaxed">
-            The programming languages, frameworks, and infrastructure tools I leverage to build production-grade web systems.
+          <p className="max-w-md text-sm text-titanium-300 leading-relaxed">
+            No arbitrary percentage bars—just the languages, databases, and libraries I use across my projects and internships.
           </p>
         </div>
 
-        {/* Categories Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-          {skillCategories.map((cat, catIdx) => (
-            <div
-              key={catIdx}
-              className="p-6 sm:p-8 rounded-3xl bg-[#11131C]/80 border border-white/[0.08] hover:border-accent/30 hover:bg-[#141624] transition-all duration-300 shadow-xl"
-            >
-              <div className="flex items-center gap-3 mb-2">
-                <div className="w-8 h-8 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center">
-                  {cat.icon}
-                </div>
-                <h3 className="text-lg sm:text-xl font-heading font-bold text-white">
-                  {cat.category}
-                </h3>
-              </div>
-              <p className="text-xs text-titanium-400 font-mono mb-6">
-                {cat.description}
-              </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-10">
+          {groups.map((group) => (
+            <div key={group.title}>
+              <h3 className="text-xs font-mono uppercase tracking-widest text-titanium-400 pb-3 border-b border-surface-border mb-2">
+                {group.title}
+              </h3>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {cat.skills.map((skill, sIdx) => (
+              <div className="divide-y divide-surface-border">
+                {group.tools.map((tool) => (
                   <div
-                    key={sIdx}
-                    className="p-3.5 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-accent/40 hover:bg-white/[0.05] transition-all group flex items-start gap-3"
+                    key={tool.name}
+                    className="py-3.5 flex items-center justify-between gap-4 group"
                   >
-                    <div className="text-2xl text-titanium-400 group-hover:text-accent transition-colors shrink-0 mt-0.5">
-                      {skill.icon}
+                    <div className="flex items-center gap-3 min-w-0">
+                      <span className="text-lg text-titanium-400 group-hover:text-accent transition-colors shrink-0">
+                        {tool.icon}
+                      </span>
+                      <span className="text-sm font-heading font-semibold text-titanium-50 shrink-0">
+                        {tool.name}
+                      </span>
                     </div>
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <span className="text-sm font-heading font-semibold text-white group-hover:text-accent transition-colors">
-                          {skill.name}
-                        </span>
-                        <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-white/5 text-accent">
-                          {skill.level}
-                        </span>
-                      </div>
-                      <p className="text-[11px] text-titanium-400 font-mono mt-0.5 leading-snug">
-                        {skill.note}
-                      </p>
-                    </div>
+                    <span className="text-xs font-mono text-titanium-400 text-right truncate sm:whitespace-normal">
+                      {tool.where}
+                    </span>
                   </div>
                 ))}
               </div>

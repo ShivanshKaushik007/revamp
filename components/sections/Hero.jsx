@@ -1,21 +1,37 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import {
-  Download,
-  ArrowRight,
-  Copy,
-  Check,
-  MapPin,
-  Clock,
-  Sparkles,
-} from "lucide-react";
+import { Download, ArrowRight, Copy, Check } from "lucide-react";
 import { FaGithub, FaLinkedinIn, FaInstagram } from "react-icons/fa";
 import { SiLeetcode } from "react-icons/si";
 import Lanyard from "@/components/ui/Lanyard";
-import Stats from "@/components/ui/Stats";
+
+const highlights = [
+  {
+    label: "Studying",
+    value: "B.Tech CSE '27 · IET Lucknow",
+    href: "#career",
+  },
+  {
+    label: "Last Internship",
+    value: "SWE Intern at Minitaka",
+    href: "#career",
+  },
+  {
+    label: "Hackathon",
+    value: "4th / 430+ teams · Hack with UP",
+    href: "#career",
+  },
+  {
+    label: "Writing",
+    value: "2 deep dives on Postgres & WebRTC →",
+    href: "/blog",
+    isRoute: true,
+  },
+];
 
 const Hero = () => {
   const [copied, setCopied] = useState(false);
@@ -48,105 +64,87 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative min-h-[calc(100vh-80px)] flex flex-col justify-between pt-8 pb-12 overflow-hidden"
+      className="relative pt-10 sm:pt-14 pb-16 overflow-hidden"
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-12 max-w-7xl">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-          {/* Left Column: Narrative, Editorial Headline & Actions */}
+      <div className="container mx-auto px-4 sm:px-6 max-w-6xl">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+          {/* Left Column */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-7 flex flex-col text-left z-10"
           >
-            {/* Live Status & Time Chips */}
-            <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 mb-5 sm:mb-6">
-              <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-accent/10 border border-accent/25 text-[11px] sm:text-xs font-mono text-accent">
+            {/* Quiet human status line */}
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mb-6 text-xs font-mono text-titanium-400">
+              <span className="inline-flex items-center gap-2 text-titanium-200">
                 <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-accent" />
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#5BB98C] opacity-60" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#5BB98C]" />
                 </span>
-                <span>Available for Engineering Roles</span>
-              </div>
-
-              <div className="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-white/[0.03] border border-white/10 text-[11px] sm:text-xs font-mono text-titanium-300">
-                <MapPin className="w-3.5 h-3.5 text-titanium-400 shrink-0" />
-                <span>Lucknow, IN</span>
-                {currentTime && (
-                  <>
-                    <span className="text-white/20">•</span>
-                    <Clock className="w-3 h-3 text-titanium-400 shrink-0" />
-                    <span>{currentTime} IST</span>
-                  </>
-                )}
-              </div>
+                Open to 2027 SWE roles & internships
+              </span>
+              <span className="text-titanium-600">/</span>
+              <span>
+                Lucknow, IN{currentTime ? ` · ${currentTime} IST` : ""}
+              </span>
             </div>
 
-            {/* Editorial Main Headline */}
-            <h1 className="h1 text-white font-heading font-extrabold tracking-tight leading-[1.08] mb-5">
-              Architecting{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-sky-300 to-white">
-                real-time systems
+            {/* Editorial Headline */}
+            <h1 className="h1 text-titanium-50 mb-6">
+              Building{" "}
+              <span className="font-editorial text-accent font-normal tracking-normal text-[1.08em]">
+                real-time
               </span>{" "}
-              with design precision.
+              web apps and tools that feel fast.
             </h1>
 
-            {/* Personal Value Proposition */}
-            <p className="text-base sm:text-lg text-titanium-300 font-sans leading-relaxed max-w-2xl mb-8">
-              Hi, I'm <strong className="text-white font-semibold">Shivansh Kaushik</strong> — 
-              a Full-Stack Software Engineer and Technical Head at E-Cell IET Lucknow. 
-              I design resilient distributed architectures (WebSockets, WebRTC, multi-tenant databases) 
-              paired with tactile, high-craft user interfaces.
+            {/* Grounded First-Person Intro */}
+            <p className="text-base sm:text-lg text-titanium-300 font-sans leading-relaxed max-w-xl mb-8">
+              I'm <span className="text-titanium-50 font-medium">Shivansh Kaushik</span> — a CS undergrad at IET Lucknow and Technical Head at E-Cell. I like building products end-to-end, from Postgres schemas and WebSocket rooms down to the last interface detail.
             </p>
 
-            {/* Action Bar: Primary CTAs */}
-            <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 sm:gap-4 mb-8">
-              <div className="flex items-center gap-3 w-full sm:w-auto">
-                <a href="#work" className="flex-1 sm:flex-initial">
-                  <Button size="md" variant="default" className="w-full sm:w-auto justify-center gap-2 text-sm font-semibold">
-                    <span>Explore Work</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </Button>
-                </a>
+            {/* Primary Actions */}
+            <div className="flex flex-wrap items-center gap-3 mb-8">
+              <a href="#work">
+                <Button size="md" variant="primary" className="gap-2">
+                  <span>See my work</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Button>
+              </a>
 
-                <a
-                  href="https://drive.google.com/file/d/1hGu1UvcQ64tME9tXWXm-22r_JTMZCFb9/view?usp=sharing"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 sm:flex-initial"
-                >
-                  <Button size="md" variant="secondary" className="w-full sm:w-auto justify-center gap-2 text-sm font-medium">
-                    <Download className="w-4 h-4 text-accent" />
-                    <span>Resume CV</span>
-                  </Button>
-                </a>
-              </div>
+              <a
+                href="https://drive.google.com/file/d/1hGu1UvcQ64tME9tXWXm-22r_JTMZCFb9/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button size="md" variant="secondary" className="gap-2">
+                  <Download className="w-4 h-4 text-accent" />
+                  <span>Resume</span>
+                </Button>
+              </a>
 
-              {/* Copy Email Button */}
               <button
                 onClick={copyEmail}
-                className="group relative inline-flex items-center justify-center gap-2 h-12 px-4 rounded-full bg-white/[0.03] border border-white/10 hover:border-accent/40 text-xs sm:text-sm font-mono text-titanium-300 hover:text-white transition-all active:scale-[0.98] w-full sm:w-auto"
-                title="Click to copy email address"
+                className="group inline-flex items-center gap-2 h-11 px-4 rounded-full bg-transparent border border-surface-border hover:border-titanium-500 text-xs sm:text-sm font-mono text-titanium-300 hover:text-titanium-50 transition-colors"
+                title="Copy email address"
               >
                 {copied ? (
                   <>
-                    <Check className="w-4 h-4 text-accent" />
-                    <span className="text-accent font-medium">Email Copied!</span>
+                    <Check className="w-3.5 h-3.5 text-[#5BB98C]" />
+                    <span className="text-[#5BB98C]">copied!</span>
                   </>
                 ) : (
                   <>
-                    <Copy className="w-4 h-4 text-titanium-400 group-hover:text-accent transition-colors flex-shrink-0" />
-                    <span className="break-all sm:break-normal">{email}</span>
+                    <Copy className="w-3.5 h-3.5 text-titanium-400 group-hover:text-accent transition-colors" />
+                    <span>{email}</span>
                   </>
                 )}
               </button>
             </div>
 
-            {/* Social Links Dock */}
-            <div className="flex items-center gap-3 pt-2">
-              <span className="text-xs font-mono uppercase tracking-widest text-titanium-400 mr-2">
-                Connect //
-              </span>
+            {/* Social Links */}
+            <div className="flex items-center gap-4 text-titanium-400">
               {[
                 {
                   icon: <FaGithub className="w-4 h-4" />,
@@ -175,30 +173,50 @@ const Hero = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.name}
-                  className="w-10 h-10 rounded-full bg-white/[0.03] border border-white/10 flex items-center justify-center text-titanium-300 hover:text-accent hover:border-accent/40 hover:bg-white/[0.06] transition-all duration-200"
+                  className="inline-flex items-center gap-1.5 text-xs font-mono hover:text-accent transition-colors py-1"
                 >
                   {s.icon}
+                  <span className="hidden sm:inline">{s.name}</span>
                 </a>
               ))}
             </div>
           </motion.div>
 
-          {/* Right Column: Unique Centerpiece - 3D Physics Lanyard Pass */}
+          {/* Right Column: Interactive 3D Badge */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
+            initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-5 flex justify-center items-center relative"
           >
-            {/* Ambient Backlight for 3D Lanyard */}
-            <div className="absolute w-[300px] h-[300px] bg-accent/10 rounded-full blur-[100px] pointer-events-none" />
             <Lanyard />
           </motion.div>
         </div>
 
-        {/* Integrated Metric Strip */}
-        <div className="mt-12 sm:mt-16 pt-8 border-t border-white/[0.07]">
-          <Stats />
+        {/* Clean Editorial Index Strip (replaces generic CountUp stats) */}
+        <div className="mt-12 pt-8 border-t border-surface-border grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {highlights.map((item, idx) => {
+            const inner = (
+              <div className="group flex flex-col gap-1">
+                <span className="text-[11px] font-mono uppercase tracking-wider text-titanium-500">
+                  {item.label}
+                </span>
+                <span className="text-sm font-medium text-titanium-100 group-hover:text-accent transition-colors">
+                  {item.value}
+                </span>
+              </div>
+            );
+
+            return item.isRoute ? (
+              <Link key={idx} href={item.href}>
+                {inner}
+              </Link>
+            ) : (
+              <a key={idx} href={item.href}>
+                {inner}
+              </a>
+            );
+          })}
         </div>
       </div>
     </section>

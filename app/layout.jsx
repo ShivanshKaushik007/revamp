@@ -1,14 +1,25 @@
-import { Plus_Jakarta_Sans, Inter, JetBrains_Mono } from "next/font/google";
+import {
+  Plus_Jakarta_Sans,
+  Inter,
+  JetBrains_Mono,
+  Instrument_Serif,
+} from "next/font/google";
 import "./globals.css";
 
-//components
 import Header from "@/components/ui/header";
-import ShapeGrid from "@/components/ui/ShapeGrid";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
   variable: "--font-heading",
+  display: "swap",
+});
+
+const instrumentSerif = Instrument_Serif({
+  subsets: ["latin"],
+  weight: ["400"],
+  style: ["normal", "italic"],
+  variable: "--font-serif",
   display: "swap",
 });
 
@@ -27,9 +38,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata = {
-  title: "Shivansh Kaushik — Full-Stack Engineer & Tech Lead",
+  title: "Shivansh Kaushik — Software Engineer",
   description:
-    "Portfolio of Shivansh Kaushik — Full-Stack Software Engineer & Technical Head at E-Cell IET Lucknow. Specializing in high-concurrency real-time systems, WebSockets, WebRTC, and craft-driven UI.",
+    "Portfolio of Shivansh Kaushik — CS undergrad at IET Lucknow and full-stack engineer building real-time web applications, backend systems, and thoughtful interfaces.",
   keywords: [
     "Shivansh Kaushik",
     "Software Engineer",
@@ -53,27 +64,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="scroll-smooth dark">
       <body
-        className={`${plusJakartaSans.variable} ${inter.variable} ${jetbrainsMono.variable} font-sans bg-primary text-titanium-100 min-h-screen relative selection:bg-accent/20 selection:text-accent`}
+        className={`${plusJakartaSans.variable} ${instrumentSerif.variable} ${inter.variable} ${jetbrainsMono.variable} font-sans bg-primary text-titanium-100 min-h-screen relative selection:bg-accent/25 selection:text-titanium-50`}
       >
-        {/* Ambient background glow accents */}
-        <div className="fixed inset-0 -z-20 pointer-events-none overflow-hidden">
-          <div className="absolute top-[-10%] left-[20%] w-[600px] h-[500px] bg-accent/5 rounded-full blur-[140px]" />
-          <div className="absolute top-[40%] right-[-10%] w-[500px] h-[500px] bg-sky-500/5 rounded-full blur-[160px]" />
-          <div className="absolute bottom-[-10%] left-[-5%] w-[600px] h-[500px] bg-slate-800/10 rounded-full blur-[180px]" />
-        </div>
+        {/* Subtle tactile paper grain & static dot matrix */}
+        <div className="fixed inset-0 -z-20 pointer-events-none dot-matrix opacity-55" />
+        <div className="fixed inset-0 -z-10 pointer-events-none grain-overlay" />
 
-        {/* Dynamic canvas grid with subtle ice-blue interaction */}
-        <div className="fixed inset-0 -z-10 w-full h-full overflow-hidden pointer-events-none opacity-40">
-          <ShapeGrid
-            direction="diagonal"
-            speed={0.15}
-            borderColor="rgba(255, 255, 255, 0.035)"
-            hoverFillColor="rgba(56, 189, 248, 0.08)"
-            squareSize={55}
-            shape="square"
-            hoverTrailAmount={4}
-          />
-        </div>
+        {/* Subtle warm ambient light at top edge only */}
+        <div className="fixed top-[-180px] left-1/2 -translate-x-1/2 w-[780px] h-[360px] bg-accent/[0.055] rounded-full blur-[140px] -z-20 pointer-events-none" />
 
         <div className="relative z-10 flex flex-col min-h-screen">
           <Header />
@@ -83,4 +81,3 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
-

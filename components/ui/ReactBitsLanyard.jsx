@@ -1,8 +1,6 @@
 /* eslint-disable react/no-unknown-property */
 'use client';
 
-
-
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Canvas, extend, useFrame } from '@react-three/fiber';
 import { useGLTF, useTexture, Environment, Lightformer } from '@react-three/drei';
@@ -19,8 +17,6 @@ const lanyard = '/assets/lanyard.png';
 useGLTF.preload(cardGLB);
 useTexture.preload(lanyard);
 
-// 1x1 transparent pixel — lets useTexture be called unconditionally when a
-// front/back image isn't supplied.
 const BLANK_PIXEL =
   'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==';
 
@@ -68,28 +64,28 @@ export default function ReactBitsLanyard({
         <Environment blur={0.75}>
           <Lightformer
             intensity={2}
-            color="#38BDF8"
+            color="#F27D42"
             position={[0, -1, 5]}
             rotation={[0, 0, Math.PI / 3]}
             scale={[100, 0.1, 1]}
           />
           <Lightformer
             intensity={3}
-            color="white"
+            color="#FAF8F5"
             position={[-1, -1, 1]}
             rotation={[0, 0, Math.PI / 3]}
             scale={[100, 0.1, 1]}
           />
           <Lightformer
-            intensity={3}
-            color="#38BDF8"
+            intensity={2.5}
+            color="#F27D42"
             position={[1, 1, 1]}
             rotation={[0, 0, Math.PI / 3]}
             scale={[100, 0.1, 1]}
           />
           <Lightformer
-            intensity={10}
-            color="#0284C7"
+            intensity={8}
+            color="#D9642B"
             position={[-10, 0, 14]}
             rotation={[0, Math.PI / 2, Math.PI / 3]}
             scale={[100, 10, 1]}
@@ -259,7 +255,7 @@ function Band({
                 map-anisotropy={16}
                 clearcoat={isMobile ? 0 : 1}
                 clearcoatRoughness={0.08}
-                roughness={0.2}
+                roughness={0.22}
                 metalness={0.05}
               />
             </mesh>
@@ -271,7 +267,7 @@ function Band({
       <mesh ref={band}>
         <meshLineGeometry />
         <meshLineMaterial
-          color="#38BDF8"
+          color="#F27D42"
           depthTest={false}
           resolution={isMobile ? [1000, 2000] : [1000, 1000]}
           useMap
