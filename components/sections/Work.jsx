@@ -187,7 +187,7 @@ const Work = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-12 gap-6">
           <div>
             <p className="text-xs font-mono text-accent uppercase tracking-widest mb-2.5">
-              01 / Selected Work
+              03 / Selected Work
             </p>
             <h2 className="h2 text-titanium-50">
               Things I've{" "}

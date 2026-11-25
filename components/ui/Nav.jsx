@@ -7,11 +7,11 @@ import { useActiveSection } from "@/lib/useActiveSection";
 
 const links = [
   { name: "Home", path: "/#home", id: "home" },
-  { name: "Work", path: "/#work", id: "work" },
-  { name: "Experience", path: "/#career", id: "career" },
-  { name: "Toolkit", path: "/#skills", id: "skills" },
   { name: "About", path: "/#about", id: "about" },
-  { name: "Notes", path: "/blog", id: "blog" },
+  { name: "Experience", path: "/#career", id: "career" },
+  { name: "Work", path: "/#work", id: "work" },
+  { name: "Toolkit", path: "/#skills", id: "skills" },
+  { name: "Notes", path: "/#notes", id: "notes" },
 ];
 
 const Nav = ({ activeSection: propActive, setActiveSection: propSetActive }) => {
@@ -22,11 +22,6 @@ const Nav = ({ activeSection: propActive, setActiveSection: propSetActive }) => 
   const isHomePage = pathname === "/" || pathname === "";
 
   const handleNavClick = (e, link) => {
-    if (link.id === "blog") {
-      setActiveSection("blog");
-      return;
-    }
-
     if (isHomePage) {
       e.preventDefault();
       setActiveSection(link.id);

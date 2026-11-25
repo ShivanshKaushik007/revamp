@@ -10,12 +10,12 @@ import { Button } from "./button";
 
 const links = [
   { name: "Home", path: "/#home", id: "home" },
-  { name: "Work", path: "/#work", id: "work" },
-  { name: "Experience", path: "/#career", id: "career" },
-  { name: "Toolkit", path: "/#skills", id: "skills" },
   { name: "About", path: "/#about", id: "about" },
+  { name: "Experience", path: "/#career", id: "career" },
+  { name: "Work", path: "/#work", id: "work" },
+  { name: "Toolkit", path: "/#skills", id: "skills" },
+  { name: "Notes", path: "/#notes", id: "notes" },
   { name: "Contact", path: "/#contact", id: "contact" },
-  { name: "Notes", path: "/blog", id: "blog" },
 ];
 
 const MobileNav = ({ activeSection: propActive, setActiveSection: propSetActive }) => {
@@ -26,11 +26,6 @@ const MobileNav = ({ activeSection: propActive, setActiveSection: propSetActive 
   const isHomePage = pathname === "/" || pathname === "";
 
   const handleMobileNavClick = (link) => {
-    if (link.id === "blog") {
-      setActiveSection("blog");
-      return;
-    }
-
     if (isHomePage) {
       setActiveSection(link.id);
       const targetEl = document.getElementById(link.id);

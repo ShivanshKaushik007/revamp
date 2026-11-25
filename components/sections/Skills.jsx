@@ -68,7 +68,7 @@ const Skills = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
           <div>
             <p className="text-xs font-mono text-accent uppercase tracking-widest mb-2.5">
-              03 / Toolkit
+              04 / Toolkit
             </p>
             <h2 className="h2 text-titanium-50">
               Tools I{" "}

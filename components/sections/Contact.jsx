@@ -151,7 +151,7 @@ const Contact = () => {
           <div className="lg:col-span-5 space-y-8">
             <div>
               <p className="text-xs font-mono text-accent uppercase tracking-widest mb-2.5">
-                05 / Contact
+                06 / Contact
               </p>
               <h2 className="h2 text-titanium-50 mb-4">
                 Say{" "}
