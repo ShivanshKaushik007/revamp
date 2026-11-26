@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Download, ArrowRight, Copy, Check } from "lucide-react";
 import { FaGithub, FaLinkedinIn, FaInstagram } from "react-icons/fa";
 import { SiLeetcode } from "react-icons/si";
-import Lanyard from "@/components/ui/Lanyard";
+import { PixelatedCanvas } from "@/components/ui/pixelated-canvas";
 import StarBorder from "@/components/ui/StarBorder";
 import ClickSpark from "@/components/ui/ClickSpark";
 
@@ -38,8 +38,24 @@ const highlights = [
 const Hero = () => {
   const [copied, setCopied] = useState(false);
   const [currentTime, setCurrentTime] = useState("");
+  const [canvasDims, setCanvasDims] = useState({ width: 410, height: 452 });
 
   const email = "shivanshkaushik1237@gmail.com";
+
+  useEffect(() => {
+    const updateDims = () => {
+      if (window.innerWidth < 480) {
+        setCanvasDims({ width: 310, height: 342 });
+      } else if (window.innerWidth < 1024) {
+        setCanvasDims({ width: 360, height: 396 });
+      } else {
+        setCanvasDims({ width: 410, height: 452 });
+      }
+    };
+    updateDims();
+    window.addEventListener("resize", updateDims);
+    return () => window.removeEventListener("resize", updateDims);
+  }, []);
 
   useEffect(() => {
     const updateTime = () => {
@@ -225,14 +241,39 @@ const Hero = () => {
             </div>
           </motion.div>
 
-          {/* Right Column: Interactive 3D Badge */}
+          {/* Right Column: Interactive Pixelated Portrait */}
           <motion.div
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-5 flex justify-center items-center relative"
+            className="lg:col-span-5 flex flex-col justify-center items-center relative"
           >
-            <Lanyard />
+            <div className="rounded-2xl border border-surface-border bg-[#0C0C0E] overflow-hidden shadow-2xl">
+              <PixelatedCanvas
+                src="/herosection.png"
+                width={canvasDims.width}
+                height={canvasDims.height}
+                cellSize={3}
+                dotScale={0.9}
+                shape="square"
+                backgroundColor="#0C0C0E"
+                dropoutStrength={0.35}
+                interactive={true}
+                distortionStrength={3}
+                distortionRadius={80}
+                distortionMode="swirl"
+                followSpeed={0.2}
+                jitterStrength={4}
+                jitterSpeed={4}
+                tintColor="#F27D42"
+                tintStrength={0.12}
+                objectFit="cover"
+                className="block cursor-crosshair"
+              />
+            </div>
+            <span className="mt-3 text-[11px] font-mono text-titanium-500">
+              move cursor over portrait
+            </span>
           </motion.div>
         </div>
 

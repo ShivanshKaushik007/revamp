@@ -45,7 +45,7 @@ const About = () => {
 
             <div className="space-y-4 text-sm sm:text-base text-titanium-300 leading-relaxed">
               <p>
-                I'm currently in my third/fourth year studying Computer Science at{" "}
+                I'm currently in my fourth year studying Computer Science at{" "}
                 <span className="text-titanium-100 font-medium">IET Lucknow</span>. Most of what I know came from picking a problem I didn't fully understand—like Postgres Row-Level Security or WebRTC peer state—and building an app around it until the edges stopped breaking.
               </p>
               <p>
