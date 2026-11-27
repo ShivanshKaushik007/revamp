@@ -57,7 +57,7 @@ const MobileNav = ({ activeSection: propActive, setActiveSection: propSetActive 
           </div>
           <div>
             <h2 className="font-heading font-bold text-titanium-50 text-base">
-              shivansh<span className="text-accent">.</span>
+              Shivansh<span className="text-accent">.</span>
             </h2>
             <p className="text-xs font-mono text-titanium-400">Software Engineer</p>
           </div>

@@ -10,6 +10,7 @@ import { SiLeetcode } from "react-icons/si";
 import { PixelatedCanvas } from "@/components/ui/pixelated-canvas";
 import StarBorder from "@/components/ui/StarBorder";
 import ClickSpark from "@/components/ui/ClickSpark";
+import { FloatingDock } from "@/components/ui/FloatingDock";
 
 const highlights = [
   {
@@ -202,42 +203,32 @@ const Hero = () => {
               </ClickSpark>
             </div>
 
-            {/* Social Links */}
-            <div className="flex items-center gap-4 text-titanium-400">
-              {[
-                {
-                  icon: <FaGithub className="w-4 h-4" />,
-                  href: "https://github.com/ShivanshKaushik007",
-                  name: "GitHub",
-                },
-                {
-                  icon: <FaLinkedinIn className="w-4 h-4" />,
-                  href: "https://www.linkedin.com/in/shivansh-kaushik-b3165827a/",
-                  name: "LinkedIn",
-                },
-                {
-                  icon: <SiLeetcode className="w-4 h-4" />,
-                  href: "https://leetcode.com/u/Shivansh_Kaushik/",
-                  name: "LeetCode",
-                },
-                {
-                  icon: <FaInstagram className="w-4 h-4" />,
-                  href: "https://www.instagram.com/shivanshkaushik1237",
-                  name: "Instagram",
-                },
-              ].map((s, idx) => (
-                <a
-                  key={idx}
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={s.name}
-                  className="inline-flex items-center gap-1.5 text-xs font-mono hover:text-accent transition-colors py-1"
-                >
-                  {s.icon}
-                  <span className="hidden sm:inline">{s.name}</span>
-                </a>
-              ))}
+            {/* Social Links — Aceternity Floating Dock */}
+            <div className="pt-2">
+              <FloatingDock
+                items={[
+                  {
+                    icon: <FaGithub className="h-full w-full" />,
+                    href: "https://github.com/ShivanshKaushik007",
+                    title: "GitHub",
+                  },
+                  {
+                    icon: <FaLinkedinIn className="h-full w-full" />,
+                    href: "https://www.linkedin.com/in/shivansh-kaushik-b3165827a/",
+                    title: "LinkedIn",
+                  },
+                  {
+                    icon: <SiLeetcode className="h-full w-full" />,
+                    href: "https://leetcode.com/u/Shivansh_Kaushik/",
+                    title: "LeetCode",
+                  },
+                  {
+                    icon: <FaInstagram className="h-full w-full" />,
+                    href: "https://www.instagram.com/shivanshkaushik1237",
+                    title: "Instagram",
+                  },
+                ]}
+              />
             </div>
           </motion.div>
 
