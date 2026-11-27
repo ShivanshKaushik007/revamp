@@ -46,7 +46,8 @@ const Hero = () => {
   useEffect(() => {
     const updateDims = () => {
       if (window.innerWidth < 480) {
-        setCanvasDims({ width: 310, height: 342 });
+        const w = Math.min(340, Math.max(250, window.innerWidth - 40));
+        setCanvasDims({ width: w, height: Math.round(w * 1.1) });
       } else if (window.innerWidth < 1024) {
         setCanvasDims({ width: 360, height: 396 });
       } else {
@@ -92,7 +93,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-7 flex flex-col text-left z-10"
+            className="lg:col-span-7 min-w-0 flex flex-col text-left z-10"
           >
             {/* Quiet human status line */}
             <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mb-6 text-xs font-mono text-titanium-400">
@@ -163,7 +164,7 @@ const Hero = () => {
                 duration={380}
               >
                 <a
-                  href="https://drive.google.com/file/d/1hGu1UvcQ64tME9tXWXm-22r_JTMZCFb9/view?usp=sharing"
+                  href="https://drive.google.com/file/d/1w2QmvrGaw6LcBqPK66-aFewHmsKw9sgR/view?usp=sharing"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -185,18 +186,18 @@ const Hero = () => {
               >
                 <button
                   onClick={copyEmail}
-                  className="group inline-flex items-center gap-2 h-11 px-4 rounded-full bg-transparent border border-surface-border hover:border-titanium-500 text-xs sm:text-sm font-mono text-titanium-300 hover:text-titanium-50 transition-colors"
+                  className="group inline-flex items-center gap-2 h-11 px-3.5 sm:px-4 max-w-full rounded-full bg-transparent border border-surface-border hover:border-titanium-500 text-xs sm:text-sm font-mono text-titanium-300 hover:text-titanium-50 transition-colors"
                   title="Copy email address"
                 >
                   {copied ? (
                     <>
-                      <Check className="w-3.5 h-3.5 text-[#5BB98C]" />
+                      <Check className="w-3.5 h-3.5 text-[#5BB98C] shrink-0" />
                       <span className="text-[#5BB98C]">copied!</span>
                     </>
                   ) : (
                     <>
-                      <Copy className="w-3.5 h-3.5 text-titanium-400 group-hover:text-accent transition-colors" />
-                      <span>{email}</span>
+                      <Copy className="w-3.5 h-3.5 text-titanium-400 group-hover:text-accent transition-colors shrink-0" />
+                      <span className="truncate">{email}</span>
                     </>
                   )}
                 </button>
@@ -237,9 +238,9 @@ const Hero = () => {
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-5 flex flex-col justify-center items-center relative"
+            className="lg:col-span-5 min-w-0 flex flex-col justify-center items-center relative"
           >
-            <div className="rounded-2xl border border-surface-border bg-[#0C0C0E] overflow-hidden shadow-2xl">
+            <div className="max-w-full rounded-2xl border border-surface-border bg-[#0C0C0E] overflow-hidden shadow-2xl">
               <PixelatedCanvas
                 src="/herosection.png"
                 width={canvasDims.width}

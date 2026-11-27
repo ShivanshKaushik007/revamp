@@ -114,9 +114,9 @@ export default function BlogIndexPage() {
               </div>
 
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-6">
-                <div className="lg:col-span-7">
+                <div className="lg:col-span-7 min-w-0">
                   <Link href={`/blog/${art.slug}`}>
-                    <h2 className="text-2xl sm:text-3xl font-heading font-bold text-titanium-50 group-hover:text-accent transition-colors mb-3">
+                    <h2 className="text-xl sm:text-3xl font-heading font-bold text-titanium-50 group-hover:text-accent transition-colors mb-3 break-words">
                       {art.title}
                     </h2>
                   </Link>

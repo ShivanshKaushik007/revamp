@@ -296,18 +296,20 @@ export function TnpDemographicsSimulator() {
   return (
     <div className="my-10 rounded-xl border border-surface-border bg-surface p-5 sm:p-6">
       <div className="flex flex-wrap items-center justify-between gap-3 pb-4 mb-5 border-b border-surface-border">
-        <div>
+        <div className="min-w-0">
           <div className="flex items-center gap-2 text-xs font-mono text-accent uppercase tracking-wider font-semibold mb-1">
-            <BarChart3 className="w-4 h-4" />
+            <BarChart3 className="w-4 h-4 shrink-0" />
             <span>Interactive Demographics Explorer</span>
           </div>
-          <p className="text-xs text-titanium-400">
+          <p className="text-xs text-titanium-400 break-words">
             Rebuilt with React state using the exact dataset inside{" "}
-            <code className="font-mono text-titanium-200">app/recruiters/demographic/page.tsx</code>
+            <code className="font-mono text-titanium-200 break-all sm:break-normal">
+              app/recruiters/demographic/page.tsx
+            </code>
           </p>
         </div>
 
-        <div className="inline-flex rounded-lg bg-primary border border-surface-border p-1">
+        <div className="inline-flex flex-wrap rounded-lg bg-primary border border-surface-border p-1 gap-0.5">
           {[
             { id: "offers", label: "Offers (172→518)" },
             { id: "packages", label: "CTC Trend (LPA)" },
@@ -332,7 +334,7 @@ export function TnpDemographicsSimulator() {
 
       {mode === "offers" && (
         <div>
-          <div className="grid grid-cols-5 gap-3 items-end h-52 px-3 pt-6 pb-3 rounded-lg bg-primary border border-surface-border">
+          <div className="grid grid-cols-5 gap-1.5 sm:gap-3 items-end h-52 px-2 sm:px-3 pt-6 pb-3 rounded-lg bg-primary border border-surface-border">
             {OFFERS_DATA.map((item) => {
               const heightPct = Math.round((item.offers / 518) * 100);
               const isSelected = item.session === selectedSession;
@@ -342,7 +344,7 @@ export function TnpDemographicsSimulator() {
                   type="button"
                   onClick={() => setSelectedSession(item.session)}
                   aria-pressed={isSelected}
-                  className="group flex flex-col items-center justify-end h-full focus:outline-none"
+                  className="group flex flex-col items-center justify-end h-full focus:outline-none min-w-0"
                 >
                   <span
                     className={`text-xs font-mono mb-1.5 transition-colors ${
@@ -362,7 +364,7 @@ export function TnpDemographicsSimulator() {
                     />
                   </div>
                   <span
-                    className={`mt-2 text-[11px] font-mono ${
+                    className={`mt-2 text-[9px] sm:text-[11px] font-mono ${
                       isSelected ? "text-titanium-50 font-semibold" : "text-titanium-400"
                     }`}
                   >
@@ -636,7 +638,7 @@ export function TnpChallengeLab() {
           </p>
         </div>
 
-        <div className="inline-flex rounded-lg bg-primary border border-surface-border p-1">
+        <div className="inline-flex flex-wrap rounded-lg bg-primary border border-surface-border p-1 gap-0.5">
           {[
             { id: "both", label: "Split View" },
             { id: "symptom", label: "What Broke" },

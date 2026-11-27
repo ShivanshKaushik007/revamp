@@ -76,6 +76,17 @@
   color: #CFCAC0;
   font-size: 1.0625rem;
   line-height: 1.85;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.prose-editorial p,
+.prose-editorial li,
+.prose-editorial a,
+.prose-editorial h1,
+.prose-editorial h2,
+.prose-editorial h3 {
+  overflow-wrap: anywhere;
 }
 
 .prose-editorial h1 {

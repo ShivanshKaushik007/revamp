@@ -25,7 +25,6 @@ const instrumentSerif = Instrument_Serif({
 
 const inter = Inter({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
   variable: "--font-sans",
   display: "swap",
 });
@@ -62,18 +61,18 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="scroll-smooth dark">
+    <html lang="en" className="scroll-smooth dark overflow-x-clip">
       <body
-        className={`${plusJakartaSans.variable} ${instrumentSerif.variable} ${inter.variable} ${jetbrainsMono.variable} font-sans bg-primary text-titanium-100 min-h-screen relative selection:bg-accent/25 selection:text-titanium-50`}
+        className={`${plusJakartaSans.variable} ${instrumentSerif.variable} ${inter.variable} ${jetbrainsMono.variable} font-sans bg-primary text-titanium-100 min-h-screen relative overflow-x-clip selection:bg-accent/25 selection:text-titanium-50`}
       >
         {/* Subtle tactile paper grain & static dot matrix */}
         <div className="fixed inset-0 -z-20 pointer-events-none dot-matrix opacity-55" />
         <div className="fixed inset-0 -z-10 pointer-events-none grain-overlay" />
 
         {/* Subtle warm ambient light at top edge only */}
-        <div className="fixed top-[-180px] left-1/2 -translate-x-1/2 w-[780px] h-[360px] bg-accent/[0.055] rounded-full blur-[140px] -z-20 pointer-events-none" />
+        <div className="fixed top-[-180px] left-1/2 -translate-x-1/2 w-[780px] max-w-[100vw] h-[360px] bg-accent/[0.055] rounded-full blur-[140px] -z-20 pointer-events-none" />
 
-        <div className="relative z-10 flex flex-col min-h-screen">
+        <div className="relative z-10 flex flex-col min-h-screen overflow-x-clip">
           <Header />
           {children}
         </div>

@@ -234,10 +234,10 @@ const Work = () => {
               return (
                 <article
                   key={project.id}
-                  className="rounded-2xl p-6 sm:p-8 bg-surface border border-surface-border hover:border-titanium-600 transition-colors"
+                  className="rounded-2xl p-5 sm:p-8 bg-surface border border-surface-border hover:border-titanium-600 transition-colors overflow-hidden"
                 >
                   <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                    <div className={`lg:col-span-6 ${reverse ? "lg:order-2" : ""}`}>
+                    <div className={`lg:col-span-6 min-w-0 ${reverse ? "lg:order-2" : ""}`}>
                       <div className="flex items-center gap-3 mb-3 text-xs font-mono text-titanium-400">
                         <span className="text-accent">{project.num}</span>
                         <span>/</span>
@@ -349,7 +349,7 @@ const Work = () => {
                       </div>
                     </div>
 
-                    <div className={`lg:col-span-6 ${reverse ? "lg:order-1" : ""}`}>
+                    <div className={`lg:col-span-6 min-w-0 ${reverse ? "lg:order-1" : ""}`}>
                       <BrowserFrame
                         domain={project.domain}
                         image={project.image}
@@ -425,7 +425,7 @@ const Work = () => {
                     ))}
                   </div>
 
-                  <div className="pt-4 border-t border-surface-border flex items-center justify-between text-xs font-mono">
+                  <div className="pt-4 border-t border-surface-border flex flex-wrap items-center justify-between gap-2 text-xs font-mono">
                     <a
                       href={project.live}
                       target="_blank"
@@ -435,7 +435,7 @@ const Work = () => {
                       <span>Visit site</span>
                       <ArrowUpRight className="w-3.5 h-3.5" />
                     </a>
-                    <span className="text-titanium-500">{project.domain}</span>
+                    <span className="text-titanium-500 truncate max-w-full">{project.domain}</span>
                   </div>
                 </div>
               </motion.article>

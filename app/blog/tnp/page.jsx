@@ -92,13 +92,15 @@ export default function TnpBlogPage() {
             </span>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl font-heading font-bold text-titanium-50 tracking-tight leading-[1.12] mb-5 max-w-4xl">
+          <h1 className="text-2xl sm:text-5xl font-heading font-bold text-titanium-50 tracking-tight leading-[1.15] mb-5 max-w-4xl break-words">
             Migrating IET Lucknow&apos;s Placement Portal to{" "}
             <span className="font-editorial font-normal text-titanium-200">
               Next.js 14
             </span>{" "}
             and launching on{" "}
-            <span className="text-accent">placement.ietlucknow.ac.in</span>
+            <span className="text-accent">
+              placement.<wbr />ietlucknow.<wbr />ac.in
+            </span>
           </h1>
 
           <p className="text-base sm:text-lg text-titanium-300 leading-relaxed max-w-3xl mb-8">
@@ -158,7 +160,7 @@ export default function TnpBlogPage() {
         <TnpPreviewDeck />
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          <div className="lg:col-span-8 max-w-none">
+          <div className="lg:col-span-8 max-w-none min-w-0">
             {/* Mobile Collapsible TOC */}
             <div className="block lg:hidden mb-8 p-4 rounded-xl bg-surface border border-surface-border">
               <details className="group">
@@ -405,7 +407,9 @@ export default function TnpBlogPage() {
               </section>
 
               <section id="college-domain-launch" className="scroll-mt-24">
-                <h2>6. Launching on placement.ietlucknow.ac.in &amp; Honest Notes</h2>
+                <h2>
+                  6. Launching on placement.<wbr />ietlucknow.<wbr />ac.in &amp; Honest Notes
+                </h2>
 
                 <p>
                   By March 8, 2026 (commit <code>87c0c59</code>), <code>public/CNAME</code> pointed at{" "}

@@ -33,7 +33,7 @@ const Header = () => {
   const isContactActive = activeSection === "contact";
 
   return (
-    <header className="sticky top-0 z-50 bg-primary/80 backdrop-blur-md border-b border-surface-border">
+    <header className="sticky top-0 z-50 bg-primary/80 backdrop-blur-md border-b border-surface-border overflow-x-clip">
       <div className="container mx-auto max-w-6xl px-4 sm:px-6 h-16 flex items-center justify-between">
         {/* Brand Mark */}
         <Link

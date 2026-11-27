@@ -129,8 +129,8 @@ export default function SwiftBlogPage() {
                 </span>
                 <ArrowRight className="w-4 h-4 text-accent group-hover:translate-x-1 transition-transform" />
               </div>
-              <h3 className="text-xl font-heading font-bold text-titanium-50 group-hover:text-accent transition-colors">
-                Migrating IET Lucknow&apos;s Placement Portal to Next.js 14 &amp; Launching on placement.ietlucknow.ac.in
+              <h3 className="text-lg sm:text-xl font-heading font-bold text-titanium-50 group-hover:text-accent transition-colors break-words">
+                Migrating IET Lucknow&apos;s Placement Portal to Next.js 14 &amp; Launching on placement.<wbr />ietlucknow.<wbr />ac.in
               </h3>
             </Link>
           </div>

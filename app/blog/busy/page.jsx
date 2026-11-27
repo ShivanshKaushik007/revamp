@@ -164,7 +164,7 @@ export default function BusyBlogPage() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          <div className="lg:col-span-8 max-w-none">
+          <div className="lg:col-span-8 max-w-none min-w-0">
             {/* Mobile TOC */}
             <div className="block lg:hidden mb-8 p-4 rounded-xl bg-surface border border-surface-border">
               <details className="group">

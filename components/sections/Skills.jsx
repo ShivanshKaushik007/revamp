@@ -93,7 +93,7 @@ const Skills = () => {
                 {group.tools.map((tool) => (
                   <div
                     key={tool.name}
-                    className="py-3.5 flex items-center justify-between gap-4 group"
+                    className="py-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-4 group"
                   >
                     <div className="flex items-center gap-3 min-w-0">
                       <span className="text-lg text-titanium-400 group-hover:text-accent transition-colors shrink-0">
@@ -103,7 +103,7 @@ const Skills = () => {
                         {tool.name}
                       </span>
                     </div>
-                    <span className="text-xs font-mono text-titanium-400 text-right truncate sm:whitespace-normal">
+                    <span className="text-xs font-mono text-titanium-400 sm:text-right pl-7 sm:pl-0">
                       {tool.where}
                     </span>
                   </div>

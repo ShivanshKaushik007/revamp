@@ -43,8 +43,8 @@ const MobileNav = ({ activeSection: propActive, setActiveSection: propSetActive 
       <SheetTrigger className="w-9 h-9 rounded-full bg-surface border border-surface-border flex items-center justify-center text-titanium-200 hover:text-titanium-50 hover:border-accent/50 transition-colors">
         <Menu className="w-4 h-4" />
       </SheetTrigger>
-      <SheetContent className="flex flex-col bg-primary/95 backdrop-blur-xl border-l border-surface-border p-6">
-        <div className="mt-10 mb-8 flex items-center gap-2.5">
+      <SheetContent className="flex flex-col bg-primary/95 backdrop-blur-xl border-l border-surface-border p-5 sm:p-6 overflow-y-auto">
+        <div className="mt-6 sm:mt-10 mb-5 sm:mb-8 flex items-center gap-2.5">
           <div className="w-8 h-8 rounded-md bg-surface-elevated border border-surface-border flex items-center justify-center p-1 overflow-hidden">
             <Image
               src="/logo.png"

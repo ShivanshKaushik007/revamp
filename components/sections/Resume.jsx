@@ -107,7 +107,7 @@ const Resume = () => {
             </h2>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
             {filters.map((tab) => (
               <button
                 key={tab.id}
@@ -240,7 +240,7 @@ const Resume = () => {
                     ))}
 
                     <a
-                      href="https://drive.google.com/file/d/1hGu1UvcQ64tME9tXWXm-22r_JTMZCFb9/view?usp=sharing"
+                      href="https://drive.google.com/file/d/1w2QmvrGaw6LcBqPK66-aFewHmsKw9sgR/view?usp=sharing"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 text-xs font-mono text-titanium-200 hover:text-accent transition-colors pt-2"
