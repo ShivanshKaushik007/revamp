@@ -29,7 +29,7 @@ const highlights = [
   },
   {
     label: "Writing",
-    value: "2 deep dives on Postgres & WebRTC →",
+    value: "3 deep dives on TNP, Postgres & WebRTC →",
     href: "/blog",
     isRoute: true,
   },

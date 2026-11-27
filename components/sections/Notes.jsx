@@ -8,6 +8,15 @@ import StarBorder from "@/components/ui/StarBorder";
 
 const notes = [
   {
+    slug: "/blog/tnp",
+    date: "Mar 10, 2026",
+    readTime: "16 min read",
+    tag: "Institutional Web",
+    title: "Shipping IET Lucknow's Placement Portal on placement.ietlucknow.ac.in",
+    summary:
+      "Interactive story covering the 49-commit migration, 99.7 MB media fixes, Chart.js demographics, hydration bugs, and Nodemailer SMTP routing.",
+  },
+  {
     slug: "/blog/busy",
     date: "Sep 14, 2026",
     readTime: "31 min read",
@@ -75,7 +84,7 @@ const Notes = () => {
           </ClickSpark>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {notes.map((note) => (
             <Link
               key={note.slug}

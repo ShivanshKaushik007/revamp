@@ -120,17 +120,17 @@ export default function SwiftBlogPage() {
               Next note
             </p>
             <Link
-              href="/blog/busy"
+              href="/blog/tnp"
               className="group block p-6 rounded-xl bg-surface border border-surface-border hover:border-accent/50 transition-colors"
             >
               <div className="flex items-center justify-between mb-2">
                 <span className="text-xs font-mono text-titanium-400">
-                  PostgreSQL RLS · Graph Dependencies · Server Actions
+                  Next.js 14 · Chart.js · Nodemailer · placement.ietlucknow.ac.in
                 </span>
                 <ArrowRight className="w-4 h-4 text-accent group-hover:translate-x-1 transition-transform" />
               </div>
               <h3 className="text-xl font-heading font-bold text-titanium-50 group-hover:text-accent transition-colors">
-                How I Built Busy: A Deep Dive into a Project & Task Management Platform
+                Migrating IET Lucknow&apos;s Placement Portal to Next.js 14 &amp; Launching on placement.ietlucknow.ac.in
               </h3>
             </Link>
           </div>

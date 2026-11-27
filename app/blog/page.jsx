@@ -10,6 +10,23 @@ export const metadata = {
 
 const articles = [
   {
+    slug: "tnp",
+    title: "Migrating IET Lucknow's Placement Portal to Next.js 14 & Launching on placement.ietlucknow.ac.in",
+    description:
+      "The story of migrating and hardening placement.ietlucknow.ac.in—taming giant placement-drive JPGs, fixing card glow overflows, dodging a trailingSlash API trap, and building interactive Chart.js cohorts.",
+    date: "March 10, 2026",
+    readTime: "16 min read",
+    tag: "Institutional Web & Interactive",
+    highlights: [
+      "Interactive challenge explorer, commit timeline & live Chart.js cohort simulator",
+      "Fixed GlowingEffect overflow, PersonCard hydration & hover dead-zone bugs",
+      "Zero-CMS fs.readdirSync drive galleries & Nodemailer SMTP recruiter inbox",
+      "Deployed on the official college subdomain placement.ietlucknow.ac.in",
+    ],
+    stack: ["Next.js", "TypeScript", "Chart.js", "Nodemailer", "GSAP", "Motion"],
+    image: "/assets/tnp.png",
+  },
+  {
     slug: "busy",
     title: "How I Built Busy: A Deep Dive into a Project & Task Management Platform",
     description:
